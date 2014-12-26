@@ -19,9 +19,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'sdoc',  group: :doc
 
-group :production do
-  gem 'rails_12factor'
-end
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'rspec-rails'
