@@ -26,6 +26,11 @@ class ServicesController < ApplicationController
 
   end
 
+  def update
+    @service.update_attributes(service_params)
+    redirect_to services_path
+  end
+
 
   private
 
