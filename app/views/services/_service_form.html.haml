@@ -3,6 +3,9 @@
     .col-xs-6.col-xs-offset-3
       %h4.text-center.padder-v-lg New Service
       = form_for @service do |s|
+        - if flash[:error]
+          .alert.alert-danger
+            = error
         .form-group
           .input-group
             %span.input-group-addon

@@ -15,7 +15,8 @@ class ServicesController < ApplicationController
     if @service.save
       redirect_to services_path
     else
-      render 'new'
+      redirect_to new_service_path
+      flash[:error] = "This fields should be filled"
     end
   end
 
