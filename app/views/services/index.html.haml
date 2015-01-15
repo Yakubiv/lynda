@@ -1,2 +1,21 @@
-%h1 Services#index
-%p Find me in app/views/services/index.html.haml
+.container
+  - if admin_signed_in?
+    .row.m-t-xl
+      .col-lg-2.col-md-2
+        %a.btn.btn-block.btn-success.btn-border{href: new_service_path}
+          %i.fa.fa-plus
+          Add service
+  .row.m-t-xl
+    - @services.each do |s|
+      .col-sm-2.col-md-2.col-lg-2
+        .service.wrapper-sm
+          %p 
+            %h4 Name: #{s.name}
+          %p
+            %h4 Price: #{s.price}
+          .btn-group.btn-group-justified
+            - if admin_signed_in?
+              = link_to 'edit', edit_service_path(s), class: 'btn btn-success '
+              = link_to 'view', s, class: 'btn btn-success'
+            - else
+              = link_to 'view', s, class: 'btn btn-success'
