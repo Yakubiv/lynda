@@ -12,10 +12,7 @@
           %p 
             %h4 Name: #{s.name}
           %p
-            %h4 Price: #{s.price}
+            %h4 Price: #{s.price}$
           .btn-group.btn-group-justified
-            - if admin_signed_in?
-              = link_to 'edit', edit_service_path(s), class: 'btn btn-success '
-              = link_to 'view', s, class: 'btn btn-success'
-            - else
-              = link_to 'view', s, class: 'btn btn-success'
+            = link_to 'edit', edit_service_path(s), class: 'btn btn-success '
+            = link_to 'view', s, class: 'btn btn-success'
