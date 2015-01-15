@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
   devise_for :admins
-  root 'home#index'
-
+  root 'services#index'
+  resources :services
 end
