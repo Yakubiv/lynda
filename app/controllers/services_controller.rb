@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :authenticate_admin!, except: [:show]
+  before_action :authenticate_admin!, except: [:index, :show]
   before_action :find_service, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -11,14 +11,19 @@ class ServicesController < ApplicationController
   end
 
   def create
-    @sevice = Service.create(service_params)
-    
+    @service = Service.new(service_params)
+    if @service.save
+      redirect_to services_path
+    else
+      render 'new'
+    end
   end
 
   def show
   end
 
   def edit
+
   end
 
 
