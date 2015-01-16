@@ -1,0 +1,9 @@
+.container
+  .row.m.t.xl
+    .col-lg-12
+      %h2.text-center Appointments
+  .row.m.t.lg
+    - @appointments.each do |a|
+      .form-group
+        = link_to a.date.strftime("%B %d at %I:%M %p"), a
+        = a.status

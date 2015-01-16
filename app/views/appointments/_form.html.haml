@@ -1,0 +1,14 @@
+.container
+  .row.m-t-xl
+    .col-xs-6.col-sm-6.col-xs-offset-3
+      %h2.text-center New appointment
+      = form_for @appointment do |a|
+        .form-group
+          #datetimepicker1
+            = a.datetime_select :date
+        .form-group
+          = a.submit 'done', class: 'btn btn-success btn-block'
+        :javascript
+          $(function () {
+              $('#datetimepicker1').datetimepicker();
+          });
