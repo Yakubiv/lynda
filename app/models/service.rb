@@ -1,4 +1,6 @@
 class Service < ActiveRecord::Base
+	has_and_belongs_to_many :appointments, join_table: 'appointments_services', class_name: 'Appointment'
+
 	validates :name, :price, presence: true
 	validates :name, uniqueness: { message: 'you already have one' }
 

@@ -5,6 +5,13 @@
         %a.btn.btn-block.btn-success.btn-border{href: new_service_path}
           %i.fa.fa-plus
           Add service
+      .col-lg-2.col-md-2
+        %a.btn.btn-block.btn-success.btn-border{href: new_appointment_path}
+          %i.fa.fa-plus
+          Add appointment
+      .col-lg-2.col-md-2
+        %a.btn.btn-block.btn-success.btn-border{href: appointments_path}
+          appointments
   .row.m-t-xl
     - @services.each do |s|
       .col-sm-2.col-md-2.col-lg-2
