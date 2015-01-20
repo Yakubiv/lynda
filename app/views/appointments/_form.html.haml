@@ -4,8 +4,10 @@
       %h2.text-center New appointment
       = form_for @appointment do |a|
         .form-group
+          = render 'customers/form', a: a 
+        .form-group
           .input-group#datetimepicker1
-            = a.text_field :date, class: 'form-control', data: { date_format: 'DD-MM-YYYY HH:MM TT' }
+            = a.text_field :date, class: 'form-control', data: { date_format: 'DD-MM-YYYY HH:MM A' }, placeholder: 'Set date'
             %span.input-group-addon
               %i.fa.fa-calendar
         .form-group

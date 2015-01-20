@@ -11,7 +11,8 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appintment = Appointment.create(appointment_params)
+    @appointment = Appointment.create(appointment_params)
+    @appointment.customer.create
     if @appintment.save
       redirect_to appointments_path
     else
@@ -26,9 +27,12 @@ class AppointmentsController < ApplicationController
   end
 
   def update
+    @appointment.update_attributes(appointment_params)
+    redirect_to services_path
   end
 
   def destroy
+    @appointment.destroy
   end
   
 private

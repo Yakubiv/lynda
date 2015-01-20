@@ -1,0 +1,10 @@
+= a.fields_for :customers do |c|
+  .row
+    .form-group
+      .col-xs-6
+        = c.text_field :first_name, class: 'form-control', placeholder: 'Enter first name'
+      .col-xs-6
+        = c.text_field :last_name, class: 'form-control', placeholder: 'Enter last name'
+  .row
+    .form-group
+      = c.text_field :phone, class: 'form-control', placeholder: 'Phone'
