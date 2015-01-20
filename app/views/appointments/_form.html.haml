@@ -5,7 +5,7 @@
       = form_for @appointment do |a|
         .form-group
           .input-group#datetimepicker1
-            = a.text_field :date, class: 'form-control'
+            = a.text_field :date, class: 'form-control', data: { date_format: 'DD-MM-YYYY HH:MM TT' }
             %span.input-group-addon
               %i.fa.fa-calendar
         .form-group
@@ -13,7 +13,6 @@
         :javascript
           $(function () {
               $('#datetimepicker1').datetimepicker({
-              dateFormat: 'yyy-dd-mm HH:MM',
               sideBySide: true
-              }).val();
+              });
           });
