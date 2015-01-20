@@ -1,0 +1,18 @@
+.container
+  .row.m-t-xl
+    .col-xs-6.col-sm-6.col-xs-offset-3
+      %h2.text-center New appointment
+      = form_for @appointment do |a|
+        .form-group
+          .input-group#datetimepicker1
+            = a.text_field :date, class: 'form-control', data: { date_format: 'DD-MM-YYYY HH:MM TT' }
+            %span.input-group-addon
+              %i.fa.fa-calendar
+        .form-group
+          = a.submit 'done', class: 'btn btn-success btn-block'
+        :javascript
+          $(function () {
+              $('#datetimepicker1').datetimepicker({
+              sideBySide: true
+              });
+          });

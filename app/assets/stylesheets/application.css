@@ -4,6 +4,7 @@
  *= require font-awesome
  *= require home
  *= require utilities
+ *= require bootstrap-datetimepicker
  *= require_self
  *= require parsley
  */
