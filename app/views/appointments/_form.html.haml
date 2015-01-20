@@ -4,11 +4,16 @@
       %h2.text-center New appointment
       = form_for @appointment do |a|
         .form-group
-          #datetimepicker1
-            = a.datetime_select :date
+          .input-group#datetimepicker1
+            = a.text_field :date, class: 'form-control'
+            %span.input-group-addon
+              %i.fa.fa-calendar
         .form-group
           = a.submit 'done', class: 'btn btn-success btn-block'
         :javascript
           $(function () {
-              $('#datetimepicker1').datetimepicker();
+              $('#datetimepicker1').datetimepicker({
+              dateFormat: 'yyy-dd-mm HH:MM',
+              sideBySide: true
+              }).val();
           });
