@@ -8,7 +8,7 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
-    @appointment = @appointment.build_customer
+    @appointment.build_customer
   end
 
   def create
