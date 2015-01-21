@@ -8,12 +8,13 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
+    @appointment = @appointment.build_customer
   end
 
   def create
     @appointment = Appointment.create(appointment_params)
-    @appointment.customer.create
-    if @appintment.save
+    
+    if @appointment.save
       redirect_to appointments_path
     else
       render 'new'
@@ -33,15 +34,16 @@ class AppointmentsController < ApplicationController
 
   def destroy
     @appointment.destroy
+    redirect_to appointments_path
   end
   
 private
   def find_appointment
-    @appintment = Appointment.find(params[:id])
+    @appointment = Appointment.find(params[:id])
   end
 
   def appointment_params
-    params.require(:appointment).permit(:date, :status)
+    params.require(:appointment).permit(:date, :status, :customer_id, { service_ids:[] })
   end
 
 end

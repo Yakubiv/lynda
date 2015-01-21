@@ -1,10 +1,14 @@
-= a.fields_for :customers do |c|
-  .row
-    .form-group
+= a.fields_for :customer do |c|
+  %h4 Create new customer
+  .form-group.bg-lt.wrapper
+    .row
       .col-xs-6
-        = c.text_field :first_name, class: 'form-control', placeholder: 'Enter first name'
+        .form-group
+          = c.text_field :first_name, class: 'form-control', placeholder: 'Enter first name'
       .col-xs-6
-        = c.text_field :last_name, class: 'form-control', placeholder: 'Enter last name'
-  .row
-    .form-group
-      = c.text_field :phone, class: 'form-control', placeholder: 'Phone'
+        .form-group
+          = c.text_field :last_name, class: 'form-control', placeholder: 'Enter last name'
+    .row
+      .col-xs-12
+        .form-group
+          = c.text_field :phone, class: 'form-control', placeholder: 'Phone'
