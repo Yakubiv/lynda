@@ -1,11 +1,22 @@
 .container
   .row.m-t-xl
-    .col-xs-6.col-sm-6.col-xs-offset-3
-      %h2.text-center New appointment
-      = form_for @appointment do |a|
+    .col-xs-8.col-sm-8.col-xs-offset-2
+      %h2.text-center.padder-v New appointment
+      = form_for (@appointment) do |a|
+        .form-group
+          = render 'customers/form', a: a 
+        .form-group.wrapper
+          .row
+            .col-sm-12
+              %h4 Services
+          .row
+            .col-sm-12
+              - Service.all.each do |service|
+                = check_box_tag 'appointment[service_ids][]', service.id, @appointment.services.include?(service.id)
+                = service.name
         .form-group
           .input-group#datetimepicker1
-            = a.text_field :date, class: 'form-control', data: { date_format: 'DD-MM-YYYY HH:MM TT' }
+            = a.text_field :date, class: 'form-control', data: { date_format: 'DD/MM/YYYY hh:mm A' }, placeholder: 'Set date'
             %span.input-group-addon
               %i.fa.fa-calendar
         .form-group
