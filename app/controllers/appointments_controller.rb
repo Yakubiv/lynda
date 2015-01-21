@@ -13,7 +13,6 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.create(appointment_params)
-
     if @appointment.save
       redirect_to appointments_path
     else
@@ -45,6 +44,6 @@ class AppointmentsController < ApplicationController
 
   def appointment_params
     params.require(:appointment)
-          .permit(:date, :status, :customer_id, customer_attributes: [:first_name, :last_name, :phone], service_ids:[] )
+          .permit(:date, :status, :customer_id, :is_new_customer, customer_attributes: [:first_name, :last_name, :phone], service_ids:[] )
   end
 end

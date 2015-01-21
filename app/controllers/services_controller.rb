@@ -32,6 +32,10 @@ class ServicesController < ApplicationController
     redirect_to services_path
   end
 
+  def destroy
+    @service.destroy
+    redirect_to services_path
+  end
 
   private
 

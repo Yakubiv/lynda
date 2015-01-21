@@ -23,3 +23,4 @@
           .btn-group.btn-group-justified
             = link_to 'edit', edit_service_path(s), class: 'btn btn-success '
             = link_to 'view', s, class: 'btn btn-success'
+          = link_to(fa_icon('trash'), service_path(s), method: :delete)

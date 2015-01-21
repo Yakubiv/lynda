@@ -18,3 +18,21 @@
 //= require bootstrap-datetimepicker
 //= require validations
 //= require_tree .
+$(document).ready(function(){
+	$(document).on('change', '#radio_button', function(){
+		console.log(this);
+		console.log($(this).find('#appointment_is_new_customer_false')[0].checked);
+		if($(this).find('#appointment_is_new_customer_false')[0].checked){
+			$('.form-group .old_customer').removeClass('old_customer');
+		}else
+		{
+			$('.form-group .new_customer').removeClass('new_customer');
+		}
+	});
+});
+
+$(function () {
+  $('#datetimepicker1').datetimepicker({
+  sideBySide: true
+  });
+});

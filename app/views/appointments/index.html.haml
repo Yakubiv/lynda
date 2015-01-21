@@ -8,5 +8,5 @@
         = s.name
       .form-group
         = link_to a.date.try(:strftime, "%B %d at %I:%M %p"), a
-        = a.customer_id
-        = link_to 'delete', appointment_path(a), method: :delete
+        = a.customer.first_name
+        = link_to(fa_icon('trash'), appointment_path(a), method: :delete)

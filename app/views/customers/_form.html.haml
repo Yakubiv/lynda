@@ -1,9 +1,4 @@
 = a.fields_for :customer do |c|
-  .form-group.bg-lt.wrapper
-    .row
-      .col-xs-6
-        .form-group
-          = a.collection_select(:customer_id, Customer.all, :id, :last_name,  :include_blank => "Please select")
   %h4 Create new customer
   .form-group.bg-lt.wrapper
     .row

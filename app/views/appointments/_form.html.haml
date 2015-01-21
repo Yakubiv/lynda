@@ -4,7 +4,17 @@
       %h2.text-center.padder-v New appointment
       = form_for @appointment do |a|
         .form-group
-          = render 'customers/form', a: a
+          #radio_button
+            = a.radio_button :is_new_customer, 'false', checked: true
+            Existing customer
+            = a.radio_button :is_new_customer, 'true'
+            New customer
+        .form-group
+          .customer
+            .new_customer
+              = render 'customers/form', a: a
+            .old_customer
+              = a.collection_select(:customer_id, Customer.all, :id, :last_name,  :include_blank => "Please select")
         .form-group.wrapper
           .row
             .col-sm-12
@@ -21,9 +31,3 @@
               %i.fa.fa-calendar
         .form-group
           = a.submit 'done', class: 'btn btn-success btn-block'
-        :javascript
-          $(function () {
-              $('#datetimepicker1').datetimepicker({
-              sideBySide: true
-              });
-          });

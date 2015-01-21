@@ -3,6 +3,7 @@
  *= require bootstrap/bootstrap
  *= require font-awesome
  *= require home
+ *= require customers
  *= require utilities
  *= require bootstrap-datetimepicker
  *= require_self
