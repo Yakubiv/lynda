@@ -2,9 +2,9 @@
   .row.m-t-xl
     .col-xs-8.col-sm-8.col-xs-offset-2
       %h2.text-center.padder-v New appointment
-      = form_for (@appointment) do |a|
+      = form_for @appointment do |a|
         .form-group
-          = render 'customers/form', a: a 
+          = render 'customers/form', a: a
         .form-group.wrapper
           .row
             .col-sm-12

@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :find_appointment, only: [:show, :update, :edit, :destroy] 
-  
+  before_action :find_appointment, only: [:show, :update, :edit, :destroy]
+
   def index
     @appointments = Appointment.all
   end
@@ -13,7 +13,7 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.create(appointment_params)
-    
+
     if @appointment.save
       redirect_to appointments_path
     else
@@ -36,14 +36,15 @@ class AppointmentsController < ApplicationController
     @appointment.destroy
     redirect_to appointments_path
   end
-  
-private
+
+  private
+
   def find_appointment
     @appointment = Appointment.find(params[:id])
   end
 
   def appointment_params
-    params.require(:appointment).permit(:date, :status, :customer_id, { service_ids:[] })
+    params.require(:appointment)
+          .permit(:date, :status, :customer_id, customer_attributes: [:first_name, :last_name, :phone], service_ids:[] )
   end
-
 end
