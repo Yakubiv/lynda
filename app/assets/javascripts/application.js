@@ -14,29 +14,9 @@
 //= require jquery_ujs
 //= require parsley
 //= require moment
+//= require appointments
 //= require bootstrap-datetimepicker
 //= require validations
 //= require_tree .
-$(document).ready(function(){
-	$(document).on('change', '#radio_button', function(){
-		console.log(this);
-		console.log($(this).find('#appointment_is_new_customer_false')[0].checked);
-		console.log($('.customer'))
-		if($(this).find('#appointment_is_new_customer_false')[0].checked){
-			$('.old_customer').show();
-			$('.customer').addClass('new_customer');
-		}else
-		{
-			$('form-group, .new_customer').removeClass('new_customer');
-			$('.old_customer').hide();
-		}
-	});
-});
 
-$(document).ready(function(){
-	$(function () {
-	  $('#datetimepicker1').datetimepicker({
-	  sideBySide: true
-	  });
-	});
-});
+

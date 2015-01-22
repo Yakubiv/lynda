@@ -9,10 +9,13 @@ class AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @appointment.build_customer
+    logger.debug "New article: #{@appointment.is_new_customer}"
   end
 
   def create
+    params[:appointment][:is_new_customer] == true
     @appointment = Appointment.create(appointment_params)
+    logger.debug "New article: #{params[:appointment][:is_new_customer]}"
     if @appointment.save
       redirect_to appointments_path
     else
