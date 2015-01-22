@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
-
+  before_action :find_customer, only: [:show, :edit, :destroy, :update] 
+  
   def index
   	@customers = Customer.all
   end
@@ -13,6 +14,19 @@ class CustomersController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    @customer.update_attributes(customer_params)
+    redirect_to customers_path
+  end
+
+  def destroy
+    @customer.destroy
+    redirect_to customers_path
   end
 
  private

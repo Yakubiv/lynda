@@ -1,2 +1,17 @@
-%h1 Customers#show
-%p Find me in app/views/customers/show.html.haml
+.container
+  .row.m-t.xl
+    .col-md-10.col-md-offset-1
+      .people
+        .user
+          %h2.text-center Customer history
+          .row
+            .col-md-9
+              %h3.text-center Apopintments
+              - @customer.appointments.each do |app|
+                %h5.text-center
+                  = link_to app.date.try(:strftime, "%B %d at %I:%M %p"), app
+            .col-md-3
+              %h3.text-center Info
+              %h4 First name: #{@customer.first_name}
+              %h4 Last name: #{@customer.last_name}
+              %h4 Phone: #{@customer.phone}

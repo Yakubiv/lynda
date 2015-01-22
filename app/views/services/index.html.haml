@@ -18,6 +18,9 @@
     - @services.each do |s|
       .col-sm-2.col-md-2.col-lg-2
         .service.wrapper-sm
+          .col-xs-1.col-xs-offset-10
+            .btn-group
+              = link_to(fa_icon('trash'), service_path(s), method: :delete)
           %p 
             %h4 Name: #{s.name}
           %p
@@ -25,4 +28,3 @@
           .btn-group.btn-group-justified
             = link_to 'edit', edit_service_path(s), class: 'btn btn-success '
             = link_to 'view', s, class: 'btn btn-success'
-          = link_to(fa_icon('trash'), service_path(s), method: :delete)
