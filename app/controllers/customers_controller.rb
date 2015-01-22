@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
   
   def index
     if params[:search]
-      @customers = Customer.search(params[:search])
+      @customers = Customer.search(params[:search]).paginate(page: params[:page], per_page: 8)
     else
       @customers = Customer.all.paginate(page: params[:page], per_page: 8)
     end
