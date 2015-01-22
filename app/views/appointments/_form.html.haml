@@ -3,19 +3,19 @@
     .col-xs-8.col-sm-8.col-xs-offset-2
       %h2.text-center.padder-v New appointment
       = form_for @appointment do |a|
-        .form-group
+        .form-group.text-center
           #radio_button
             = a.radio_button :is_new_customer, 'false', checked: true
-            Existing customer
+            = a.label :is_new_customer, 'Existing customer'
             = a.radio_button :is_new_customer, 'true'
-            New customer
+            = a.label :is_new_customer, 'New customer'
         .form-group
           .customer
             .new_customer
               = render 'customers/form', a: a
           .old_customer
-            = a.collection_select(:customer_id, Customer.all, :id, :last_name,  :include_blank => "Please select")
-        .form-group.wrapper
+            = a.collection_select(:customer_id, Customer.all, :id, :last_name,  include_blank: 'Please select')
+        .form-group.wrapper.text-center
           .row
             .col-sm-12
               %h4 Services
@@ -25,8 +25,9 @@
                 = check_box_tag 'appointment[service_ids][]', service.id, @appointment.services.include?(service.id)
                 = service.name
         .form-group
+          = a.label :date, 'Set appointment date'
           .input-group#datetimepicker1
-            = a.text_field :date, class: 'form-control', data: { date_format: 'DD/MM/YYYY hh:mm A' }, placeholder: 'Set date'
+            = a.text_field :date, class: 'form-control', data: { date_format: 'DD/MM/YYYY hh:mm A' }
             %span.input-group-addon
               %i.fa.fa-calendar
         .form-group
