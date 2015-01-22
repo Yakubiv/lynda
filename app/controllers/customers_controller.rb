@@ -3,9 +3,9 @@ class CustomersController < ApplicationController
   
   def index
     if params[:search]
-      @customers = Customer.search(params[:search]).order("created_at DESC")
+      @customers = Customer.search(params[:search])
     else
-      @customers = Customer.all.order('created_at DESC')
+      @customers = Customer.all.paginate(page: params[:page], per_page: 8)
     end
   end
 
