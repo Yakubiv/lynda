@@ -12,14 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require parsley
 //= require moment
 //= require bootstrap-datetimepicker
 //= require validations
 //= require_tree .
 $(document).ready(function(){
-	$('#radio_button').change(function(){
+	$(document).on('change', '#radio_button', function(){
 		console.log(this);
 		console.log($(this).find('#appointment_is_new_customer_false')[0].checked);
 		console.log($('.customer'))
