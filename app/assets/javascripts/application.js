@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require parsley
 //= require moment
+//= require appointments
 //= require bootstrap-datetimepicker
 //= require validations
 //= require_tree .
+
+

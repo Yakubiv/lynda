@@ -4,6 +4,9 @@
       %h2.text-center Appointments
   .row.m.t.lg
     - @appointments.each do |a|
+      - a.services.each do |s|
+        = s.name
       .form-group
-        = link_to a.date.strftime("%B %d at %I:%M %p"), a
-        = a.status
+        = link_to a.date.try(:strftime, "%B %d at %I:%M %p"), a
+        = a.customer.first_name
+        = link_to(fa_icon('trash'), appointment_path(a), method: :delete)

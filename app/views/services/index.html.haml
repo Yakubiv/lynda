@@ -1,21 +1,26 @@
 .container
-  - if admin_signed_in?
-    .row.m-t-xl
-      .col-lg-2.col-md-2
-        %a.btn.btn-block.btn-success.btn-border{href: new_service_path}
-          %i.fa.fa-plus
-          Add service
-      .col-lg-2.col-md-2
-        %a.btn.btn-block.btn-success.btn-border{href: new_appointment_path}
-          %i.fa.fa-plus
-          Add appointment
-      .col-lg-2.col-md-2
-        %a.btn.btn-block.btn-success.btn-border{href: appointments_path}
-          appointments
+  .row.m-t-xl
+    .col-lg-2.col-md-2
+      %a.btn.btn-block.btn-success.btn-border{href: new_service_path}
+        %i.fa.fa-plus
+        Add service
+    .col-lg-2.col-md-2
+      %a.btn.btn-block.btn-success.btn-border{href: new_appointment_path}
+        %i.fa.fa-plus
+        Add appointment
+    .col-lg-2.col-md-2
+      %a.btn.btn-block.btn-success.btn-border{href: appointments_path}
+        appointments
+    .col-lg-2.col-md-2
+      %a.btn.btn-block.btn-success.btn-border{href: customers_path}
+        Customers
   .row.m-t-xl
     - @services.each do |s|
       .col-sm-2.col-md-2.col-lg-2
         .service.wrapper-sm
+          .col-xs-1.col-xs-offset-10
+            .btn-group
+              = link_to(fa_icon('trash'), service_path(s), method: :delete)
           %p 
             %h4 Name: #{s.name}
           %p
