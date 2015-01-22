@@ -1,11 +1,10 @@
 .container
   .row.m-t-lg
     = form_tag(customers_path, method: 'get') do
-      .row
-        .col-md-10
-          = text_field_tag :search, params[:search], placeholder: 'Serch by first and last name', class: 'form-control'
-        .col-md-2
-          = submit_tag 'Search', name: nil, class: 'btn btn-default btn-block'
+      .col-md-6.col-md-offset-2
+        = text_field_tag :search, params[:search], placeholder: 'Search by first and last name', class: 'form-control'
+      .col-md-2
+        = submit_tag 'Search', name: nil, class: 'btn btn-default btn-block'
   .row
     .col-md-10.col-md-offset-1
       %h3.text-center.padder-v All customers
