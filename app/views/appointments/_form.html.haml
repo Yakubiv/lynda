@@ -13,8 +13,8 @@
           .customer
             .new_customer
               = render 'customers/form', a: a
-            .old_customer
-              = a.collection_select(:customer_id, Customer.all, :id, :last_name,  :include_blank => "Please select")
+          .old_customer
+            = a.collection_select(:customer_id, Customer.all, :id, :last_name,  :include_blank => "Please select")
         .form-group.wrapper
           .row
             .col-sm-12
