@@ -7,7 +7,9 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .navbar.navbar-default.navbar-static-top
-      .container-fluid
-        = render 'layouts/navbar'
-    = yield
+    .container
+      .navbar.navbar-default.navbar-static-top.navbar-color
+        .container-fluid
+          = render 'layouts/navbar'
+      .content
+        = yield
