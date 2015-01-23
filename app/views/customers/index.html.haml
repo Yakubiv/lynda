@@ -1,30 +1,29 @@
-.wrapper
-  .row.m-t-lg
-    = form_tag(customers_path, method: 'get') do
-      .col-md-6.col-md-offset-2
-        = text_field_tag :search, params[:search], placeholder: 'Search by first and last name', class: 'form-control'
-      .col-md-2
-        = submit_tag 'Search', name: nil, class: 'btn btn-default btn-block'
-  .row
-    .col-md-10.col-md-offset-1
-      %h3.text-center.padder-v All customers
-      - @customers.each do |cust|
-        .col-md-3
-          .people
-            .user
-              .row
-                %h4.text-center First name: #{cust.first_name}
-              .row
-                %h4.text-center Last name: #{cust.last_name}
-              .row
-                %h5.text-center Phone:
-              .row
-                .text-center
-                  = cust.phone
-              .row
-                .btn-group.btn-group-justified.wrapper-sm
-                  = link_to 'show', cust, class: 'btn btn-success'
-                  = link_to 'edit', edit_customer_path(cust), class: 'btn btn-primary'
-  .row
-    .col-md-10.col-md-offset-1.text-center
-      = will_paginate @customers
+.row.m-t-xl
+  = form_tag(customers_path, method: 'get') do
+    .col-md-6.col-md-offset-2
+      = text_field_tag :search, params[:search], placeholder: 'Search by first and last name', class: 'form-control'
+    .col-md-2
+      = submit_tag 'Search', name: nil, class: 'btn btn-default btn-block'
+.row
+  .col-md-12
+    %h2.page-header All customers
+    - @customers.each do |cust|
+      .col-md-3
+        .people
+          .user
+            .row
+              %h4.text-center First name: #{cust.first_name}
+            .row
+              %h4.text-center Last name: #{cust.last_name}
+            .row
+              %h5.text-center Phone:
+            .row
+              .text-center
+                = cust.phone
+            .row
+              .btn-group.btn-group-justified.wrapper-sm
+                = link_to 'show', cust, class: 'btn btn-success'
+                = link_to 'edit', edit_customer_path(cust), class: 'btn btn-primary'
+.row
+  .col-md-10.col-md-offset-1.text-center
+    = will_paginate @customers

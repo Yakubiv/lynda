@@ -1,35 +1,34 @@
-.wrapper
-  .row.m-t-xl
-    .col-md-10.col-md-offset-1
-      %h3.text-center Appointment's date is #{@appointment.date.try(:strftime, "%B %d at %I:%M %p")}
-  .row.m-t-xl
-    .col-md-4
-      .people
-        .user
-          .row
-            %h4.text-center First name: #{@appointment.customer.first_name}
-          .row
-            %h4.text-center Last name: #{@appointment.customer.last_name}
-          .row
-            %h5.text-center Phone:
-          .row
-            .text-center
-              = @appointment.customer.phone
-          .row
-            .btn-group.btn-group-justified.wrapper-sm
-              = link_to 'show', @appointment.customer, class: 'btn btn-success'
-              = link_to 'edit', edit_customer_path(@appointment.customer), class: 'btn btn-primary'
-    .col-md-8
-      - @appointment.services.each do |service|
-        .col-md-3
-          .service.wrapper-sm
-            .col-xs-1.col-xs-offset-10
-              .btn-group
-                = link_to(fa_icon('trash'), service_path(service), method: :delete)
-            %p 
-              %h4 Name: #{service.name}
-            %p
-              %h4 Price: #{service.price}$
-            .btn-group.btn-group-justified
-              = link_to 'edit', edit_service_path(service), class: 'btn btn-success '
-              = link_to 'view', service, class: 'btn btn-success'
+.row.m-t-xl
+  .col-md-10.col-md-offset-1
+    %h3.text-center Appointment's date is #{@appointment.date.try(:strftime, "%B %d at %I:%M %p")}
+.row.m-t-xl
+  .col-md-4
+    .people
+      .user
+        .row
+          %h4.text-center First name: #{@appointment.customer.first_name}
+        .row
+          %h4.text-center Last name: #{@appointment.customer.last_name}
+        .row
+          %h5.text-center Phone:
+        .row
+          .text-center
+            = @appointment.customer.phone
+        .row
+          .btn-group.btn-group-justified.wrapper-sm
+            = link_to 'show', @appointment.customer, class: 'btn btn-success'
+            = link_to 'edit', edit_customer_path(@appointment.customer), class: 'btn btn-primary'
+  .col-md-8
+    - @appointment.services.each do |service|
+      .col-md-3
+        .service.wrapper-sm
+          .col-xs-1.col-xs-offset-10
+            .btn-group
+              = link_to(fa_icon('trash'), service_path(service), method: :delete)
+          %p 
+            %h4 Name: #{service.name}
+          %p
+            %h4 Price: #{service.price}$
+          .btn-group.btn-group-justified
+            = link_to 'edit', edit_service_path(service), class: 'btn btn-success '
+            = link_to 'view', service, class: 'btn btn-success'

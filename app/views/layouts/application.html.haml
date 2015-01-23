@@ -7,9 +7,13 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .container
-      .navbar.navbar-default.navbar-static-top.navbar-color
-        .container-fluid
-          = render 'layouts/navbar'
-      .content
-        = yield
+    .navbar.navbar-default.navbar-fixed-top.navbar-op
+      .container-fluid
+        = render 'layouts/navbar'
+    .container-fluid
+      .row
+        .col-sm-3.col-md-2.sidebar
+          %ul.nav.nav-sidebar
+            = render 'layouts/linklist'
+        .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.m-t-xl
+          = yield

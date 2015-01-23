@@ -1,6 +1,6 @@
 .navbar-header
-  %a.navbar-brand{href: services_path} BeautySpa
-#navbar.navbar-collapse.collapse
+  %a.navbar-brand{href: appointments_path} BeautySpa
+#navbar.navbar-collapse
   %ul.nav.navbar-nav.navbar-right
     - if admin_signed_in?
       %li= link_to(fa_icon('power-off'), destroy_admin_session_path, method: :delete)

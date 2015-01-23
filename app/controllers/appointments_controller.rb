@@ -44,15 +44,15 @@ class AppointmentsController < ApplicationController
 
   def appointment_params
       params.require(:appointment)
-            .permit(:date, :status, :is_new_customer, service_ids:[] )
-            .merge(customer_params)
+            .permit(:date, :status, :customer_id, :is_new_customer, customer_attributes: [:first_name, :last_name, :phone], service_ids:[] )
   end
 
   def customer_params
     if params[:appointment][:is_new_customer]
-      (:customer_id)
-    else
       { customer_attributes: [:first_name, :last_name, :phone] }
+    else
+      (:customer_id)
     end
   end
+
 end
