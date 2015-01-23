@@ -15,7 +15,10 @@
                 = s.name + ' | '
             %hr
           .appointment-info
-            %h5.text-center #{link_to "Appointment date is #{a.date.try(:strftime, "%B %d at %I:%M %p")}", a}
+            %h5.text-center #{link_to "Appointment's date is #{a.date.try(:strftime, "%B %d at %I:%M %p")}", a}
             %hr
-          .col-xs-1.col-xs-offset-10.wrapper
-            = link_to(fa_icon('trash'), appointment_path(a), method: :delete)
+          .row
+            .col-xs-1.wrapper
+              = link_to(fa_icon('edit'), edit_appointment_path(a))
+            .col-xs-1.col-xs-offset-8.wrapper
+              = link_to(fa_icon('trash'), appointment_path(a), method: :delete)
