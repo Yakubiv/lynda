@@ -1,6 +1,6 @@
 .container
   .row.padder-v-xl
-    .col-xs-4.col-xs-offset-4
+    .col-xs-4.col-xs-offset-3
       %h2.text-center Log in
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         = devise_error_messages!
