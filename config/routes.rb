@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root 'appointments#index'
   resources :services
   resources :appointments
-  resources :customers, only: [:index, :show, :edit, :update, :destoy]
+  resources :customers
   
 end

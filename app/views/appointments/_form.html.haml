@@ -13,7 +13,22 @@
       .form-group
         .customer
           .new_customer
-            = render 'customers/form', a: a
+            = a.fields_for :customer do |c|
+              .form-group.bg-lt.wrapper
+                .row
+                  .col-xs-6
+                    .form-group
+                      = c.label :first_name, 'First name'
+                      = c.text_field :first_name, class: 'form-control'
+                  .col-xs-6
+                    .form-group
+                      = c.label :last_name, 'Last Name'
+                      = c.text_field :last_name, class: 'form-control'
+                .row
+                  .col-xs-12
+                    .form-group
+                      = c.label :phone, 'Phone'
+                      = c.text_field :phone, class: 'form-control'
         .old_customer
           = a.collection_select(:customer_id, Customer.all, :id, :last_name,  include_blank: 'Please select')
       .form-group.wrapper.text-center

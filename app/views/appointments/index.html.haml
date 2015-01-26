@@ -21,3 +21,5 @@
             = link_to(fa_icon('edit'), edit_appointment_path(a))
           .col-xs-1.col-xs-offset-8.wrapper
             = link_to(fa_icon('trash'), appointment_path(a), method: :delete)
+.row.text-center
+  = will_paginate @appointments

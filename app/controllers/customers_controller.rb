@@ -10,11 +10,12 @@ class CustomersController < ApplicationController
   end
 
   def new
-  	@customer = Customer.new
+    @customer = Customer.new
   end
 
   def create
-  	@customer = Customer.create(customer_params)
+    @customer = Customer.create(customer_params)
+    @customer.save
   end
 
   def show
@@ -40,6 +41,7 @@ class CustomersController < ApplicationController
   end
 
  def customer_params
- 	params.require(:customer).permit(:first_name, :last_name, :phone)
+  params.require(:customer)
+        .permit(:first_name, :last_name, :phone)
  end
 end
