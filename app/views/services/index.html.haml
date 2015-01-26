@@ -4,13 +4,15 @@
   - @services.each do |s|
     .col-sm-2.col-md-2.col-lg-2
       .service
-        .service-cover
-          = link_to(fa_icon('trash'), service_path(s), method: :delete)
-        .service-content
-          %p 
-            %h4 Name: #{s.name}
-          %p
-            %h4 Price: #{s.price}$
-          .btn-group.btn-group-justified
-            = link_to 'edit', edit_service_path(s), class: 'btn btn-success '
-            = link_to 'view', s, class: 'btn btn-success'
+        .service-cover{style: "background-image: url('#{s.cover}')" }
+          .cover-overlay
+            %div.bg-t
+              .col-xs-1{style: 'z-index: 9999;'}
+                = link_to(fa_icon('edit'), edit_service_path(s))
+              .col-xs-1.col-xs-offset-7
+                = link_to(fa_icon('trash'), service_path(s), method: :delete)
+            .wrapper-sm
+              %h4 Name: #{s.name}
+              %h4 Price: #{s.price}$
+          .service-bottom
+            = link_to 'view', s, class: 'btn btn-block btn-info btn-service'

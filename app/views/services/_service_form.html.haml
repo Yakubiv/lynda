@@ -17,4 +17,12 @@
           = s.text_field :price, placeholder: 'Price', class: 'form-control'
           %span.input-group-addon .00
       .form-group
+        %p.lead Add cover for service
+        .col-md-6
+          .form-group
+            = image_tag @service.cover.thumb
+        .col-md-6
+          .form-group
+            = s.file_field :cover, class: 'form-control'
+      .form-group
         = s.submit 'Done', class: 'btn btn-block btn-success btn-border'

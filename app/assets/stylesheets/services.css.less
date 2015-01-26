@@ -10,7 +10,7 @@
 .service{
 	background: white;
     margin-bottom: 40px;
-    height: 250px;
+    height: 200px;
     box-shadow: 0px 0px 1px #999;   
 }
 
@@ -18,18 +18,31 @@
     background-color: #c5cbce;
     background-size: cover;
     background-position: center;
-    height: 55px;
+    height: 200px;
     position: relative;
     color: white;
     text-shadow: 0px 0px 1px #555;
 }
-
-.service-content{
-    padding: 5px 5px;
-    height: 100px;
+.service-cover .cover-overlay {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    height: 150px;
 }
 
-.service .btn-group-justified >.btn{
-	border: 1px solid transparent !important;
-	border-radius: 1px !important;
+.service-bottom{
+    position: absolute;
+    bottom: 0px;
+    width: 100%
+}
+.service .btn-service{
+	border-radius: 0px !important;
+}
+
+.service .bg-t{
+    background-color: silver;
+    opacity: .7;
+    height: 20%;
 }

@@ -20,6 +20,9 @@ gem 'turbolinks'
 gem 'devise'
 gem 'momentjs-rails', '>= 2.8.1'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
+gem 'carrierwave'
+gem 'fog', '1.23'
+gem 'mini_magick'
 
 gem 'jbuilder'
 gem 'sdoc',  group: :doc
