@@ -43,16 +43,12 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-      params.require(:appointment)
-            .permit(:date, :status, :customer_id, :is_new_customer, customer_attributes: [:first_name, :last_name, :phone], service_ids:[] )
+      main_params = params.require(:appointment)
+            .permit(:date, :status, :customer_id, :is_new_customer, service_ids:[])
+      additional_params = {customer_attributes: [:first_name, :last_name, :phone]}
+      if params[:appointment][:is_new_customer]
+        result = main_params.merge(additional_params)
+        result.permit!
+      end
   end
-
-  def customer_params
-    if params[:appointment][:is_new_customer]
-      { customer_attributes: [:first_name, :last_name, :phone] }
-    else
-      (:customer_id)
-    end
-  end
-
 end
