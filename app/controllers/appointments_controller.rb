@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
   before_action :find_appointment, only: [:show, :update, :edit, :destroy]
 
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.all.paginate(page: params[:page], per_page: 12)
   end
 
   def new

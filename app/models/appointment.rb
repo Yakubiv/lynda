@@ -3,5 +3,4 @@ class Appointment < ActiveRecord::Base
   belongs_to :customer
 
   accepts_nested_attributes_for :customer, allow_destroy: true
-  validates :customer_id, presence: true
 end

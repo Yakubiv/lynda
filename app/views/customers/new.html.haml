@@ -1,6 +1,5 @@
-.row
+.row.m-t-lg
+  %h3.text-center Add new customer
+.row.m-t-lg
   .col-md-10.col-md-offset-1
-    %h3.text-center Create customer
-    = form_for @customer do |cus|
-      = cus.text_field :first_name
-    = debug @customer
+    = render 'form'
