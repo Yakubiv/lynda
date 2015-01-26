@@ -5,10 +5,10 @@
       .form-group
         #radio_button
           %p
-            = a.radio_button :is_new_customer, 'false', checked: true
+            = a.radio_button :is_new_customer, false, checked: true
             = a.label :is_new_customer_false, 'Existing customer'
           %p
-            = a.radio_button :is_new_customer, 'true'
+            = a.radio_button :is_new_customer, true
             = a.label :is_new_customer_true, 'New customer'
       .form-group
         .customer

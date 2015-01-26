@@ -34,6 +34,7 @@ group :development, :test do
   gem 'web-console'
   gem 'spring'
   gem 'better_errors'
+  gem 'quiet_assets'
 end
 
 group :test do
