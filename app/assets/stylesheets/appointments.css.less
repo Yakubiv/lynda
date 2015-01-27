@@ -32,16 +32,23 @@
 
 .sidebar {
     position: fixed;
-    top: 51px;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    display: block;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-color: #f5f5f5;
-    border-right: 1px solid #eee;
+    top: 45px;
+    width: 15%;
+}
+
+.list-group-item .inline{
+    position: absolute;
+    display: -webkit-inline-box !important;
+    margin-bottom: -1px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
 }
 
 .nav > li{display: inline-flex !important;}
+
+.check-box{
+    display: -webkit-inline-box;
+}
+.check-box .item{
+    padding-left: 5px;
+}

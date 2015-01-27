@@ -4,5 +4,3 @@
   %ul.nav.navbar-nav.navbar-right
     - if admin_signed_in?
       %li= link_to(fa_icon('power-off'), destroy_admin_session_path, method: :delete)
-    -else
-      %li= link_to fa_icon('sign-in'), new_admin_session_path

@@ -1,23 +1,37 @@
 .row.m-t.xl
-  .col-md-10.col-md-offset-1
+  .col-md-12
     %h2.text-center Customer history
-    .row
+    .row.m-t-lg
+      .col-md-3
+        .user-info
+          .info-t
+            %h3.wrapper-sm.text-center CUSTOMER
+          .wrapper-sm.text-center
+            %h4 Name:
+            %p.lead #{@customer.first_name} #{@customer.last_name}
+            %h4 Phone: 
+            %p.lead #{@customer.phone}
       .col-md-9
         %h3.text-center Apopintments
-        .activity
-          - @customer.appointments.each do |app| 
+        .row.m-t-lg.text-center
+          .col-md-4
+            %p.lead Pending
             .row.m-t-lg
-              .col-md-4.col-md-offset-3
-                %i.fa.fa-tags
-                %span
-                  = time_ago_in_words(app.created_at) + ' ago'
-            .row.m-t-sm
-              .col-md-6.col-md-offset-4
-                .action    
-                  %h5.text-center
+              - @customer.appointments.each do |app| 
+                -if app.pending?
+                  %p
                     = link_to app.date.try(:strftime, "%B %d at %I:%M %p"), app
-      .col-md-3
-        %h3.text-center Info
-        %h4 First name: #{@customer.first_name}
-        %h4 Last name: #{@customer.last_name}
-        %h4 Phone: #{@customer.phone}
+          .col-md-4
+            %p.lead Completed
+            .row.m-t-lg
+              - @customer.appointments.each do |app|
+                -if app.completed?
+                  %p
+                    = link_to app.date.try(:strftime, "%B %d at %I:%M %p"), app
+          .col-md-4
+            %p.lead Cenceled
+            .row.m-t-lg
+              - @customer.appointments.each do |app|
+                -if app.canceled?
+                  %p
+                    = link_to app.date.try(:strftime, "%B %d at %I:%M %p"), app

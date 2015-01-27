@@ -1,13 +1,10 @@
-%li
-  %a{href: appointments_path}
+.m-t-xl
+  %a.list-group-item.active{href: appointments_path}
     Appointments
-    %a{href: new_appointment_path, title: 'Add new appointment'}+
-%li
-  %a{href: customers_path}
+  %a.list-group-item.inline{href: new_appointment_path}+
+  %a.list-group-item{href: customers_path}
     Customers
-  %li{class: "#{'active' if controller_name == 'customers'}"}
-    %a{href: new_customer_path, title: 'Add new customer'}+
-%li
-  %a{href: services_path}
+  %a.list-group-item{href: new_customer_path, title: 'Add new customer'}+
+  %a.list-group-item{href: services_path}
     Services
-    %a{href: new_service_path, title: 'Add new service'}+
+  %a.list-group-item{href: new_service_path, title: 'Add new service'}+

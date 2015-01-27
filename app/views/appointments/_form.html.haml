@@ -1,6 +1,6 @@
 .row
   .col-md-10.col-md-offset-1
-    %h3.text-center.padder-v New appointment
+    %h3.page-header.padder-v New appointment
     = form_for @appointment do |a|
       .form-group
         #radio_button
@@ -31,15 +31,16 @@
                       = c.text_field :phone, class: 'form-control'
         .old_customer
           = a.collection_select(:customer_id, Customer.all, :id, :last_name,  include_blank: 'Please select')
-      .form-group.wrapper.text-center
+      .form-group
         .row
           .col-md-12
             %h4 Services
         .row
-          .col-md-12
+          .col-md-12.check-box
             - Service.all.each do |service|
-              = check_box_tag 'appointment[service_ids][]', service.id, @appointment.services.include?(service.id)
-              = service.name
+              %label.item
+                = check_box_tag 'appointment[service_ids][]', service.id, @appointment.services.include?(service.id)
+                = service.name
       .form-group
         = a.label :date, 'Set appointment date'
         .input-group#datetimepicker1
@@ -48,3 +49,4 @@
             %i.fa.fa-calendar
       .form-group
         = a.submit 'done', class: 'btn btn-success btn-block btn-border'
+      = debug @appointment.errors.full_messages

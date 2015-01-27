@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
   before_action :find_appointment, only: [:show, :update, :edit, :destroy]
 
   def index
-    @appointments = Appointment.all.paginate(page: params[:page], per_page: 12)
+    @appointments = Appointment.all.paginate(page: params[:page], per_page: 12).where(status: 'pending')
   end
 
   def new
@@ -28,7 +28,7 @@ class AppointmentsController < ApplicationController
 
   def update
     @appointment.update_attributes(appointment_params)
-    redirect_to services_path
+    redirect_to appointments_path
   end
 
   def destroy
@@ -48,7 +48,7 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_keys
-    [:date, :is_new_customer, service_ids:[]]
+    [:date, :status, :is_new_customer, service_ids:[]]
   end
 
   def customer_keys

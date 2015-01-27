@@ -11,10 +11,10 @@
       .container-fluid
         = render 'layouts/navbar'
     .container-fluid
-      .row
+      .row.row-offcanvas
         - if admin_signed_in?
-          .col-sm-3.col-md-2.sidebar
-            %ul.nav.nav-sidebar
+          .col-sm-3.col-md-2.m-t-xl
+            .list-group.sidebar
               = render 'layouts/linklist'
-        .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.m-t-xl
+        .col-sm-9.col-md-10.m-t-xl
           = yield
