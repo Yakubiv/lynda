@@ -1,7 +1,7 @@
 .row.m-t-lg
   .col-md-12
     %h2.page-header #{@header} appointments
-.row.m-t-lg
+.row
   .col-md-12
     .btn-group.btn-group-justified
       = link_to 'completed', completed_appointments_path, class: "btn btn-default #{'active' if params[:action] == 'completed'}"

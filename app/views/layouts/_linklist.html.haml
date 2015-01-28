@@ -1,16 +1,7 @@
 .m-t-xl
-  %a.list-group-item.active{href: appointments_path}
-    Appointments
-  %a.list-group-item{href: new_appointment_path}
-    %span.fa.fa-plus 
-    appointment
-  %a.list-group-item{href: customers_path}
-    Customers
-  %a.list-group-item{href: new_customer_path, title: 'Add new customer'}
-    %span.fa.fa-plus 
-    customer
-  %a.list-group-item{href: services_path}
-    Services
-  %a.list-group-item{href: new_service_path, title: 'Add new service'}
-    %span.fa.fa-plus 
-    service
+  = link_to 'Appointments', appointments_path, class: "list-group-item #{'active' if controller_name == 'appointments' && params[:action] == 'index'}"
+  = link_to(fa_icon('plus')+ ' appointment', new_appointment_path, class: "list-group-item #{'active' if controller_name == 'appointments' && params[:action] == 'new'}")
+  = link_to 'Customers', customers_path, class: "list-group-item #{'active' if controller_name == 'customers' && params[:action] == 'index'}"
+  = link_to fa_icon('plus')+ ' customer', new_customer_path, class: "list-group-item #{'active' if controller_name == 'customers' && params[:action] == 'new'}"
+  = link_to 'Services', services_path, class: "list-group-item #{'active' if controller_name == 'services' && params[:action] == 'index'}"
+  = link_to fa_icon('plus')+' service', new_service_path, class: "list-group-item #{'active' if controller_name == 'services' && params[:action] == 'new'}"

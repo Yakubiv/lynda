@@ -27,7 +27,7 @@
                 .col-xs-12
                   .form-group
                     = c.label :phone, 'Phone'
-                    = c.text_field :phone, class: 'form-control'
+                    = c.telephone_field :phone, class: 'form-control'
       .form-group
         .row
           .col-sm-12
@@ -45,4 +45,4 @@
           %span.input-group-addon
             %i.fa.fa-calendar
       .form-group
-        = a.submit 'done', class: 'btn btn-success btn-block'
+        = a.submit 'done', class: 'btn btn-success btn-block btn-border'

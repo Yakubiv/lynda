@@ -28,7 +28,7 @@
                   .col-xs-12
                     .form-group
                       = c.label :phone, 'Phone'
-                      = c.text_field :phone, class: 'form-control'
+                      = c.telephone_field :phone, class: 'form-control'
         .old_customer
           = a.collection_select(:customer_id, Customer.all, :id, :last_name,  include_blank: 'Please select')
       .form-group
