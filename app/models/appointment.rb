@@ -1,5 +1,6 @@
 class Appointment < ActiveRecord::Base
   has_and_belongs_to_many :services, dependent: :destroy
+  has_one :order
   belongs_to :customer
   enum status: [:pending, :completed, :canceled]
 

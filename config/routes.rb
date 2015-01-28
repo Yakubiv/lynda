@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'orders/index'
+
   devise_for :admins
   root 'appointments#index'
   resources :services
