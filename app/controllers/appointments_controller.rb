@@ -3,7 +3,20 @@ class AppointmentsController < ApplicationController
   before_action :find_appointment, only: [:show, :update, :edit, :destroy]
 
   def index
-    @appointments = Appointment.all.paginate(page: params[:page], per_page: 12).where(status: 'pending')
+    @header = 'Pending'
+    @appointments = Appointment.pending.paginate(page: params[:page], per_page: 12)
+  end
+
+  def completed
+    @header = 'Completed'
+    @appointments = Appointment.completed.paginate(page: params[:page], per_page: 12)
+    render :index
+  end
+
+  def canceled
+    @header = 'Canceled'
+    @appointments = Appointment.canceled.paginate(page: params[:page], per_page: 12)
+    render :index
   end
 
   def new

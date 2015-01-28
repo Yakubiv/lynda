@@ -19,6 +19,19 @@
             .btn-group.btn-group-justified.wrapper-sm
               = link_to 'show', @appointment.customer, class: 'btn btn-success'
               = link_to 'edit', edit_customer_path(@appointment.customer), class: 'btn btn-primary'
+    .status
+      .row
+        %h4.text-center Status:
+      .row.wrapper-sm
+        = form_for @appointment do |a|
+          %p
+            = a.radio_button :status, 'completed'
+            = a.label :status_completed, 'Completed'
+          %p
+            = a.radio_button :status, 'canceled'
+            = a.label :status_canceled, 'Cancel'
+          %p
+            = a.submit 'Change', class: 'btn btn-block btn-success'
   .col-md-9
     - @appointment.services.each do |s|
       .col-sm-3.col-md-3
