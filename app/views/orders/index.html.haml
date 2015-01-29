@@ -9,7 +9,7 @@
 .row.m-t-lg
   - @orders.each do |a|
     .col-md-3
-      .appointment.order
+      .order
         .appointment-cover{style: 'background-color: #7FF032'}
           %h4.text-center.padder-t-sm #{link_to "#{a.customer.first_name} #{a.customer.last_name}", a.customer, class: 'btn'}
         .appointment-content
@@ -20,6 +20,21 @@
           %hr
         .appointment-info
           %h5.text-center #{link_to "Appointment's date is #{a.appointment.date.try(:strftime, "%B %d at %I:%M %p")}", a.appointment}
+          %hr
+        .wrapper-sm
+          .row
+            .col-sm-3
+              %h4 Tips: 
+            .col-sm-9
+              %h4 #{a.tips} ₴
+          .row
+            .col-sm-3
+              %p{style: 'font-size: 18px;'} Note:
+            .col-sm-9
+              %p{style: 'font-size: 16px;'}
+                = a.note
+
+
 
 .row.m-t-lg
   = will_paginate @orders

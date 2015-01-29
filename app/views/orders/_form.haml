@@ -9,7 +9,7 @@
       .col-sm-12
         %h4 Services
     .row
-      .col-md-12.check-box
+      .col-sm-12.check-box
         - Service.all.each do |service|
           %label.item
             = check_box_tag 'order[service_ids][]', service.id, @appointment.service_ids.include?(service.id)

@@ -13,6 +13,6 @@
                 = link_to(fa_icon('trash'), service_path(s), method: :delete)
             .wrapper-sm
               %h4 Name: #{s.name}
-              %h4 Price: #{s.price}$
+              %h4 Price: #{s.price} ₴
           .service-bottom
             = link_to 'view', s, class: 'btn btn-block btn-info btn-service'
