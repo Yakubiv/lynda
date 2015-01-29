@@ -17,3 +17,6 @@ $(document).ready ->
     $('#datetimepicker1').datetimepicker sideBySide: true
     return
   return
+
+$(document).ready ->
+  $("#radio-cancel").hide()

@@ -1,5 +1,5 @@
 .m-t-xl
-  = link_to 'Appointments', appointments_path, class: "list-group-item #{'active' if controller_name == 'appointments' && params[:action] == 'index'}"
+  = link_to 'Appointments', appointments_path, class: "list-group-item #{'active' if controller_name == 'appointments' && params[:action] == 'index' || params[:action] == 'completed' || params[:action] == 'canceled'}"
   = link_to(fa_icon('plus')+ ' appointment', new_appointment_path, class: "list-group-item #{'active' if controller_name == 'appointments' && params[:action] == 'new'}")
   = link_to 'Customers', customers_path, class: "list-group-item #{'active' if controller_name == 'customers' && params[:action] == 'index'}"
   = link_to fa_icon('plus')+ ' customer', new_customer_path, class: "list-group-item #{'active' if controller_name == 'customers' && params[:action] == 'new'}"

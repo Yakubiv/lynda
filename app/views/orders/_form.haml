@@ -1,0 +1,21 @@
+= form_for([@appointment, @appointment.build_order]) do |order|
+  = order.hidden_field :appointment_id, value: @appointment.id
+  = order.hidden_field :customer_id, value: @appointment.customer.id
+  .form-group
+    = order.label :tips, 'Tips'
+    = order.number_field :tips, class: 'form-control'
+  .form-group
+    .row
+      .col-sm-12
+        %h4 Services
+    .row
+      .col-md-12.check-box
+        - Service.all.each do |service|
+          %label.item
+            = check_box_tag 'order[service_ids][]', service.id, @appointment.service_ids.include?(service.id)
+            = service.name
+  .form-group
+    = order.label :note, 'Note'
+    = order.text_area :note, class: 'form-control'
+  .form-group
+    = order.submit 'Track order', class: 'btn btn-block btn-default'

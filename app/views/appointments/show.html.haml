@@ -1,6 +1,7 @@
 .row.m-t-xl
   .col-md-10.col-md-offset-1
     %h3.text-center Appointment's date is #{@appointment.date.try(:strftime, "%B %d at %I:%M %p")}
+
 .row.m-t-xl
   .col-md-3
     .people
@@ -19,19 +20,29 @@
             .btn-group.btn-group-justified.wrapper-sm
               = link_to 'show', @appointment.customer, class: 'btn btn-success'
               = link_to 'edit', edit_customer_path(@appointment.customer), class: 'btn btn-primary'
-    .status
-      .row
-        %h4.text-center Status:
-      .row.wrapper-sm
+
+      - if @appointment.pending? && @appointment.order.nil?
+        .row.wrapper-sm
+          %p.lead.text-center Do you want to cancel it?
+          = form_for @appointment do |a|
+            #radio-cancel
+              = a.radio_button :status, 'canceled', checked: true
+            %p
+              = a.submit 'CANCEL', confirm: 'Are you sure?', class: 'btn btn-block btn-default'
+        - if @appointment.order.nil?
+          .row.wrapper-sm
+            %p.lead.text-center Track order
+            .status
+              = render 'orders/form'
+
+      - if @appointment.canceled?
+        %p.lead.text-center Again add to pending?
         = form_for @appointment do |a|
+          #radio-cancel
+            = a.radio_button :status, 'pending', checked: true
           %p
-            = a.radio_button :status, 'completed'
-            = a.label :status_completed, 'Completed'
-          %p
-            = a.radio_button :status, 'canceled'
-            = a.label :status_canceled, 'Cancel'
-          %p
-            = a.submit 'Change', class: 'btn btn-block btn-success'
+            = a.submit 'pending', confirm: 'Are you sure?', class: 'btn btn-block btn-default'
+  
   .col-md-9
     - @appointment.services.each do |s|
       .col-sm-3.col-md-3

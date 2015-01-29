@@ -1,2 +1,25 @@
-%h1 Orders#index
-%p Find me in app/views/orders/index.html.haml
+.row.m-t-lg
+  .col-md-12
+    %h2.page-header All orders
+.row
+  .col-md-12
+    .btn-group.btn-group-justified
+      = link_to 'orders', orders_path, class: "btn btn-default #{'active' if controller_name == 'orders' && params[:action] == 'index'}"
+      = link_to 'canceled', canceled_appointments_path, class: "btn btn-default #{'active' if params[:action] == 'canceled'}"
+.row.m-t-lg
+  - @orders.each do |a|
+    .col-md-3
+      .appointment
+        .appointment-cover
+          %h4.text-center.padder-t-sm #{link_to "#{a.customer.first_name} #{a.customer.last_name}", a.customer, class: 'btn'}
+        .appointment-content
+          %h4.text-center Services
+          - a.services.each do |s|
+            %span.lead
+              = s.name + ' | '
+          %hr
+        .appointment-info
+          %h5.text-center #{link_to "Appointment's date is #{a.appointment.date.try(:strftime, "%B %d at %I:%M %p")}", a.appointment}
+
+.row.m-t-lg
+  = will_paginate @orders

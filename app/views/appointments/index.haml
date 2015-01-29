@@ -4,7 +4,7 @@
 .row
   .col-md-12
     .btn-group.btn-group-justified
-      = link_to 'completed', completed_appointments_path, class: "btn btn-default #{'active' if params[:action] == 'completed'}"
+      = link_to 'orders', orders_path, class: "btn btn-default #{'active' if params[:action] == 'completed'}"
       = link_to 'canceled', canceled_appointments_path, class: "btn btn-default #{'active' if params[:action] == 'canceled'}"
 .row.m-t-lg
   - @appointments.each do |a|
@@ -21,10 +21,10 @@
         .appointment-info
           %h5.text-center #{link_to "Appointment's date is #{a.date.try(:strftime, "%B %d at %I:%M %p")}", a}
           %hr
-        .row
-          .col-xs-1.wrapper
+        .row.wrapper
+          .col-xs-1
             = link_to(fa_icon('edit'), edit_appointment_path(a))
-          .col-xs-1.col-xs-offset-8.wrapper
+          .col-xs-1.col-xs-offset-9
             = link_to(fa_icon('trash'), appointment_path(a), method: :delete)
 .row.m-t-lg
   = will_paginate @appointments
