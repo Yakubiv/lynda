@@ -3,9 +3,9 @@ class Order < ActiveRecord::Base
 	belongs_to :customer
 	has_and_belongs_to_many :services
 
-	before_save :set_completed
+	after_create :set_completed
 
 	def set_completed
-		self.appointment.status = 'completed'
+		self.appointment.update(status: :completed)
 	end
 end

@@ -24,6 +24,7 @@ gem 'carrierwave'
 gem 'fog', '1.23'
 gem 'mini_magick'
 gem 'active_enum'
+gem 'rmagick'
 
 gem 'jbuilder'
 gem 'sdoc',  group: :doc
