@@ -1,9 +1,10 @@
 .row.m-t-xl
-  .col-md-10.col-md-offset-1
-    %h3.text-center Appointment's date is #{@appointment.date.try(:strftime, "%B %d at %I:%M %p")}
+  .col-sm-12
+    %p.lead.page-header Appointment's date is #{@appointment.date.try(:strftime, "%B %d at %I:%M %p")}
 
 .row.m-t-xl
-  .col-md-3
+  .col-sm-3.wrapper-sm  
+    %p.lead Customer
     .people
       .user
         .row
@@ -20,7 +21,7 @@
             .btn-group.btn-group-justified.wrapper-sm
               = link_to 'show', @appointment.customer, class: 'btn btn-success'
               = link_to 'edit', edit_customer_path(@appointment.customer), class: 'btn btn-primary'
-
+    .row.wrapper
       - if @appointment.pending? && @appointment.order.nil?
         .row.wrapper-sm
           %p.lead.text-center Do you want to cancel it?
@@ -29,12 +30,6 @@
               = a.radio_button :status, 'canceled', checked: true
             %p
               = a.submit 'CANCEL', confirm: 'Are you sure?', class: 'btn btn-block btn-default'
-        - if @appointment.order.nil?
-          .row.wrapper-sm
-            %p.lead.text-center Track order
-            .status
-              = render 'orders/form'
-
       - if @appointment.canceled?
         %p.lead.text-center Again add to pending?
         = form_for @appointment do |a|
@@ -43,19 +38,9 @@
           %p
             = a.submit 'pending', confirm: 'Are you sure?', class: 'btn btn-block btn-default'
   
-  .col-md-9
-    - @appointment.services.each do |s|
-      .col-sm-3.col-md-3
-        .service
-          .service-cover{style: "background-image: url('#{s.cover}')" }
-            .cover-overlay
-              %div.bg-t
-                .col-xs-1{style: 'z-index: 9999;'}
-                  = link_to(fa_icon('edit'), edit_service_path(s))
-                .col-xs-1.col-xs-offset-7
-                  = link_to(fa_icon('trash'), service_path(s), method: :delete)
-              .wrapper-sm
-                %h4 Name: #{s.name}
-                %h4 Price: #{s.price}₴
-            .service-bottom
-              = link_to 'view', s, class: 'btn btn-block btn-info btn-service'
+  .col-sm-6.col-sm-offset-1
+    - if @appointment.order.nil?
+      .row.wrapper-sm
+        %p.lead Track order
+        = render 'orders/form'
+
