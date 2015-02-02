@@ -1,0 +1,28 @@
+.row.m-t-xl
+  .col-xs-12
+    #receipt
+      #pushpin
+      #fringes
+      #sheet
+        .title
+          %p.text-center{style: 'font-size: 20px;'} BeautySpa
+          %p.text-center Our address
+          %hr
+        .activity
+          %p.text-center #{@receipt.order.appointment.date.try(:strftime, "%B %d at %I:%M %p")}
+          %h5.wrapper-sm Services
+          %ul
+            - @receipt.order.services.each do |service|
+              %li
+                = service.name
+                %span.pull-right
+                  %strong #{service.price} ₴
+        .total-count
+          %hr
+          %h5.text-center Total services: #{@receipt.total_services}
+          %hr
+        .total-cash
+          %h4.text-center Total cash: #{@receipt.total_cash} ₴
+        .wish
+          %p.text-center Our phone
+          %p.text-center{style: 'font-size: 20px;'} Thank you :)
