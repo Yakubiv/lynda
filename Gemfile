@@ -44,12 +44,11 @@ end
 
 group :test do
   gem 'webmock'
-  gem 'capybara-webkit'
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'shoulda-matchers'
-  gem 'simplecov', '~> 0.7.1', require: false
 end
 
 

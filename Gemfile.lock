@@ -62,9 +62,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.4.0)
-      capybara (>= 2.3.0, < 2.5.0)
-      json
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -263,10 +260,6 @@ GEM
     sexp_processor (4.4.5)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
-    simplecov (0.7.1)
-      multi_json (~> 1.0)
-      simplecov-html (~> 0.7.1)
-    simplecov-html (0.7.1)
     slop (3.6.0)
     spring (1.2.0)
     sprockets (2.12.3)
@@ -315,7 +308,7 @@ DEPENDENCIES
   bootstrap3-datetimepicker-rails
   browser
   byebug
-  capybara-webkit
+  capybara
   carrierwave
   coffee-rails
   database_cleaner
@@ -341,7 +334,6 @@ DEPENDENCIES
   rspec-rails
   sdoc
   shoulda-matchers
-  simplecov (~> 0.7.1)
   spring
   therubyracer
   turbolinks
