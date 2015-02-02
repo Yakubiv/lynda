@@ -5,11 +5,13 @@
       .form-group
         #radio_button
           %p
-            = a.radio_button :is_new_customer, false, checked: true
-            = a.label :is_new_customer_false, 'Existing customer'
+            #false
+              = a.radio_button :is_new_customer, false, checked: true
+              = a.label :is_new_customer_false, 'Existing customer'
           %p
-            = a.radio_button :is_new_customer, true
-            = a.label :is_new_customer_true, 'New customer'
+            #true
+              = a.radio_button :is_new_customer, true
+              = a.label :is_new_customer_true, 'New customer'
       .form-group
         .customer
           .new_customer
@@ -18,7 +20,7 @@
                 .row
                   .col-xs-6
                     .form-group
-                      = c.label :first_name, 'First name'
+                      = c.label :first_name, 'First Name'
                       = c.text_field :first_name, class: 'form-control'
                   .col-xs-6
                     .form-group
