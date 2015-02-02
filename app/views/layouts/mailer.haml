@@ -1,0 +1,17 @@
+!!! Strict
+%html{xmlns: "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{content: "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+    %meta{content: "width=device-width", name: "viewport"}
+    = stylesheet_link_tag 'mailers/application'
+    = render 'mailer/responsive'
+  %body.outlook{bgcolor: '#F2F4F8'}
+    %table.body{bgcolor: '#F2F4F8'}
+      %tr
+        %td
+          %table.container
+            %tr
+              %td.va-m{height: 70, align: 'center', valign: 'middle'}
+          %table.container.bg-white
+            %tr
+              %td{style: 'border-radius: 3px;'}= yield
