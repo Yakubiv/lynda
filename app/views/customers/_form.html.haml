@@ -1,19 +1,23 @@
 = fields_for :customer do |c|
   .form-group.bg-lt.wrapper
     .row
-      .col-md-6
+      .col-sm-6
         .form-group
-          = c.label :first_name, 'First Name'
+          = c.label :first_name
           = c.text_field :first_name, class: 'form-control'
-      .col-md-6
+      .col-sm-6
         .form-group
-          = c.label :last_name, 'Last Name'
+          = c.label :last_name
           = c.text_field :last_name, class: 'form-control'
     .row
-      .col-md-12
+      .col-sm-6
         .form-group
-          = c.label :phone, 'Phone'
+          = c.label :phone
           = c.telephone_field :phone, class: 'form-control'
+      .col-sm-6
+        .form-group
+          = c.label :email
+          = c.email_field :email, class: 'form-control'
   .row
     .col-md-12
       .form-group

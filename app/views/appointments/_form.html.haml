@@ -1,5 +1,5 @@
 .row
-  .col-md-10.col-md-offset-1
+  .col-sm-10.col-sm-offset-1
     %h3.page-header.padder-v New appointment
     = form_for @appointment do |a|
       .form-group
@@ -20,17 +20,21 @@
                 .row
                   .col-xs-6
                     .form-group
-                      = c.label :first_name, 'First Name'
+                      = c.label :first_name
                       = c.text_field :first_name, class: 'form-control'
                   .col-xs-6
                     .form-group
-                      = c.label :last_name, 'Last Name'
+                      = c.label :last_name
                       = c.text_field :last_name, class: 'form-control'
                 .row
-                  .col-xs-12
+                  .col-xs-6
                     .form-group
-                      = c.label :phone, 'Phone'
+                      = c.label :phone
                       = c.telephone_field :phone, class: 'form-control'
+                  .col-xs-6
+                    .form-group
+                      = c.label :email
+                      = c.email_field :email, class: 'form-control'
         .old_customer
           = a.collection_select(:customer_id, Customer.all, :id, :last_name,  include_blank: 'Please select')
       .form-group
