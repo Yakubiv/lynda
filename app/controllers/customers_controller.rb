@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_admin!
   before_action :find_customer, only: [:show, :edit, :destroy, :update] 
   
   def index
@@ -13,6 +14,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new
   end
 
+
   def create
     @customer = Customer.create(customer_params)
     if @customer.save
@@ -20,6 +22,9 @@ class CustomersController < ApplicationController
     else
       render 'new'
     end
+  end
+  
+  def edit
   end
   
   def update

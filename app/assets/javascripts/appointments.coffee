@@ -5,9 +5,9 @@ $(document).ready ->
     console.log $(".customer")
     if $(this).find("#appointment_is_new_customer_false")[0].checked
       $(".old_customer").show()
-      $(".customer").addClass "new_customer"
+      $(".customer").addClass "none_customer"
     else
-      $("form-group, .new_customer").removeClass "new_customer"
+      $("form-group, .none_customer").removeClass "none_customer"
       $(".old_customer").hide()
     return
 
