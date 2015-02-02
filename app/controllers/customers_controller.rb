@@ -9,6 +9,19 @@ class CustomersController < ApplicationController
     end
   end
 
+  def new
+    @customer = Customer.new
+  end
+
+  def create
+    @customer = Customer.create(customer_params)
+    if @customer.save
+      redirect_to customers_path
+    else
+      render 'new'
+    end
+  end
+  
   def update
     @customer.update_attributes(customer_params)
     redirect_to customers_path
