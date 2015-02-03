@@ -13,8 +13,8 @@
     .container-fluid
       .row.row-offcanvas
         - if admin_signed_in?
-          .col-sm-3.col-md-2.m-t-xl
+          .col-xs-4.col-sm-3.col-md-2.m-t-xl
             .list-group.sidebar
               = render 'layouts/linklist'
-        .col-sm-9.col-md-10.m-t-xl
+        .col-xs-8.col-sm-9.col-md-10.m-t-xl
           = yield
