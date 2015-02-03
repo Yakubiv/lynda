@@ -1,4 +1,6 @@
 class ImagesController < ApplicationController
+  before_action :find_image, only: [:show]
+
   def index
   end
 
@@ -17,10 +19,15 @@ class ImagesController < ApplicationController
   end
 
   def show
-    
+    render json: @image
   end
 
-  private
+private
+
+  def find_image
+    @image = Image.find(params[:id])
+  end
+
   def image_params
   	params.require(:image).permit(:file, :description, :order_id)
   end

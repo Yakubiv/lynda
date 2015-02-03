@@ -34,9 +34,9 @@
       %p.lead Order's images
       - @order.images.each do |i|
         - if i.persisted?
-          .col-sm-4
+          .col-sm-3
             .image
-              %a{href: order_image_path(@order, i)}
+              %a{href: order_image_path(@order, i), remote: true, "data-type" => :json}
                 .file{style: "background-image: url('#{i.file}')"}
                   .file-overlay
                     .description.wrapper-sm.text-center
