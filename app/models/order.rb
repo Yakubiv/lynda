@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
 	belongs_to :customer
 	has_and_belongs_to_many :services
 	has_one :receipt
+	has_many :images, dependent: :destroy
 
 	after_create :set_completed
 

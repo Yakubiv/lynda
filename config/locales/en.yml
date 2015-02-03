@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  mailer:
+    receipt_email:
+      subject: 'Thanks'

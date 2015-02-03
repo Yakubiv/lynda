@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @orders = Order.all.paginate(page: params[:page], per_page: 12)
   end
@@ -19,7 +21,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    
+    @order = Order.find(params[:id])
   end
 
   def update

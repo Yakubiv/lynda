@@ -3,6 +3,7 @@
  *= require bootstrap/bootstrap
  *= require font-awesome
  *= require home
+ *= require images
  *= require receipts
  *= require customers
  *= require appointments

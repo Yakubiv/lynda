@@ -1,0 +1,43 @@
+.row.m-t-xl
+  .col-sm-12
+    %p.lead.page-header Appointment's date is #{@order.appointment.date.try(:strftime, "%B %d at %I:%M %p")}
+
+.row.m-t-xl
+  .col-sm-3.wrapper-sm  
+    %p.lead Customer
+    .people
+      .user
+        .row
+          %h4.text-center First name: #{@order.appointment.customer.first_name}
+        .row
+          %h4.text-center Last name: #{@order.appointment.customer.last_name}
+        .row
+          %h5.text-center Phone:
+        .row
+          .text-center
+            = @order.appointment.customer.phone
+        .row
+          .link-box
+            .btn-group.btn-group-justified.wrapper-sm
+              = link_to 'show', @order.appointment.customer, class: 'btn btn-success'
+              = link_to 'edit', edit_customer_path(@order.appointment.customer), class: 'btn btn-primary'
+  .col-sm-9
+    - if @order.receipt.present?
+      = link_to 'View receipt', order_receipt_path(@order, @order.receipt), class: 'btn btn-block btn-default'
+    .m-t-lg
+      %p.lead Add images to order
+    .col-sm-6.col-sm-offset-3
+      = render 'images/image_form'
+.row
+  .col-sm-12    
+    .form-group
+      %p.lead Order's images
+      - @order.images.each do |i|
+        - if i.persisted?
+          .col-sm-4
+            .image
+              %a{href: order_image_path(@order, i)}
+                .file{style: "background-image: url('#{i.file}')"}
+                  .file-overlay
+                    .description.wrapper-sm
+                      = i.description

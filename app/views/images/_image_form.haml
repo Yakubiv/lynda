@@ -1,0 +1,10 @@
+= form_for([@order, @order.images.build]) do |image|
+  = image.hidden_field :order_id, value: @order.id
+  .form-group
+    = image.label :file, 'Choose image'
+    = image.file_field :file, class: 'form-control'
+  .form-group
+    = image.label :description
+    = image.text_area :description, class: 'form-control', rows: 4
+  .form-group
+    = image.submit 'Add image', class: 'btn btn-default btn-block'

@@ -19,7 +19,7 @@
               = s.name + ' | '
           %hr
         .appointment-info
-          %h5.text-center #{link_to "Appointment's date is #{a.appointment.date.try(:strftime, "%B %d at %I:%M %p")}", a.appointment}
+          %h5.text-center #{link_to "Appointment's date is #{a.appointment.date.try(:strftime, "%B %d at %I:%M %p")}", a}
           %hr
         .wrapper-sm
           .row

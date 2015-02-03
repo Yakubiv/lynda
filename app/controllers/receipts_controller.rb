@@ -1,4 +1,5 @@
 class ReceiptsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @receipts = Receipt.all
   end
