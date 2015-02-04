@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203135413) do
+ActiveRecord::Schema.define(version: 20150204123802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20150203135413) do
     t.integer  "status"
   end
 
+  add_index "appointments", ["customer_id"], name: "index_appointments_on_customer_id", using: :btree
+
   create_table "appointments_services", id: false, force: :cascade do |t|
     t.integer  "appointment_id"
     t.integer  "service_id"
@@ -64,6 +66,8 @@ ActiveRecord::Schema.define(version: 20150203135413) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "images", ["order_id"], name: "index_images_on_order_id", using: :btree
+
   create_table "orders", force: :cascade do |t|
     t.integer  "appointment_id"
     t.integer  "customer_id"
@@ -72,6 +76,8 @@ ActiveRecord::Schema.define(version: 20150203135413) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+
+  add_index "orders", ["appointment_id"], name: "index_orders_on_appointment_id", using: :btree
 
   create_table "orders_services", id: false, force: :cascade do |t|
     t.integer  "order_id"
@@ -87,6 +93,8 @@ ActiveRecord::Schema.define(version: 20150203135413) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
+
+  add_index "receipts", ["order_id"], name: "index_receipts_on_order_id", using: :btree
 
   create_table "services", force: :cascade do |t|
     t.string   "name"

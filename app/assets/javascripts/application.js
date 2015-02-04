@@ -10,6 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+
 //= require jquery
 //= require jquery_ujs
 //= require parsley
@@ -18,5 +20,13 @@
 //= require bootstrap-datetimepicker
 //= require validations
 //= require_tree .
+
+//= require bootstrap/transition
+//= require bootstrap/carousel
+//= require bootstrap/modal
+//= require bootstrap/dropdown
+//= require bootstrap/tooltip
+//= require bootstrap/tab
+//= require bootstrap/collapse
 
 

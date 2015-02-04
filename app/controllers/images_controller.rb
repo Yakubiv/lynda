@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :find_image, only: [:show]
+  before_action :find_image, only: [:destroy]
 
   def index
   end
@@ -18,9 +18,10 @@ class ImagesController < ApplicationController
   	end
   end
 
-  def show
-    render json: @image
+  def destroy
+    @image.destrot
   end
+
 
 private
 

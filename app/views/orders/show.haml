@@ -22,10 +22,7 @@
               = link_to 'show', @order.appointment.customer, class: 'btn btn-success'
               = link_to 'edit', edit_customer_path(@order.appointment.customer), class: 'btn btn-primary'
   .col-sm-9
-    - if @order.receipt.present?
-      = link_to 'View receipt', order_receipt_path(@order, @order.receipt), class: 'btn btn-block btn-default'
-    .m-t-lg
-      %p.lead Add images to order
+    %p.lead Add images to order
     .col-sm-6.col-sm-offset-3
       = render 'images/image_form'
 .row
@@ -36,8 +33,13 @@
         - if i.persisted?
           .col-sm-3
             .image
-              %a{href: order_image_path(@order, i), remote: true, "data-type" => :json}
+              %a{href:'#', "data-target" => "#image_#{i.id}", "data-toggle" => "modal"}
                 .file{style: "background-image: url('#{i.file}')"}
-                  .file-overlay
-                    .description.wrapper-sm.text-center
-                      = i.description
+                .description.wrapper-sm
+                  = i.description
+- @order.images.each do |i|
+  - if i.persisted?
+    .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1", "id"=>"image_#{i.id}"}
+      .modal-dialog.modal-lg
+        .modal-content
+          = image_tag i.file.thumb

@@ -4,13 +4,12 @@
 .row
   .col-md-12
     .btn-group.btn-group-justified
-      = link_to 'orders', orders_path, class: "btn btn-default #{'active' if controller_name == 'orders' && params[:action] == 'index'}"
-      = link_to 'canceled', canceled_appointments_path, class: "btn btn-default #{'active' if params[:action] == 'canceled'}"
+      = render 'appointments/links'
 .row.m-t-lg
   - @orders.each do |a|
     .col-md-3
       .order
-        .appointment-cover{style: 'background-color: #7FF032'}
+        .appointment-cover
           %h4.text-center.padder-t-sm #{link_to "#{a.customer.first_name} #{a.customer.last_name}", a.customer, class: 'btn'}
         .appointment-content
           %h4.text-center Services

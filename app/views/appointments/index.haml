@@ -4,8 +4,7 @@
 .row
   .col-md-12
     .btn-group.btn-group-justified
-      = link_to 'orders', orders_path, class: "btn btn-default #{'active' if params[:action] == 'completed'}"
-      = link_to 'canceled', canceled_appointments_path, class: "btn btn-default #{'active' if params[:action] == 'canceled'}"
+      = render 'links'
 .row.m-t-lg
   - @appointments.each do |a|
     .col-md-3
