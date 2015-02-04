@@ -1,5 +1,5 @@
 .row
-  .col-sm-10.col-sm-offset-1
+  .col-sm-8.col-sm-offset-2
     %h3.page-header.padder-v New appointment
     = form_for @appointment do |a|
       .form-group
@@ -13,46 +13,56 @@
               = a.radio_button :is_new_customer, true
               = a.label :is_new_customer_true, 'New customer'
       .form-group
-        .customer
-          .first_time
-            = a.fields_for :customer do |c|
-              .form-group.bg-lt.wrapper
-                .row
-                  .col-xs-6
-                    .form-group
-                      = c.label :first_name
-                      = c.text_field :first_name, class: 'form-control'
-                  .col-xs-6
-                    .form-group
-                      = c.label :last_name
-                      = c.text_field :last_name, class: 'form-control'
-                .row
-                  .col-xs-6
-                    .form-group
-                      = c.label :phone
-                      = c.telephone_field :phone, class: 'form-control'
-                  .col-xs-6
-                    .form-group
-                      = c.label :email
-                      = c.email_field :email, class: 'form-control'
-        .old_customer
-          = a.collection_select(:customer_id, Customer.all, :id, :last_name,  include_blank: 'Please select')
-      .form-group
-        .row
-          .col-md-12
-            %h4 Services
-        .row
-          .col-md-12.check-box
+        .col-sm-6
+          .old_customer
+            = a.collection_select(:customer_id, Customer.all, :id, :last_name,  include_blank: 'Please select')
+          %h4 Services
+          .row
             - Service.all.each do |service|
-              %label.item
-                = check_box_tag 'appointment[service_ids][]', service.id, @appointment.services.include?(service.id)
-                = service.name
-      .form-group
-        = a.label :date, 'Set appointment date'
-        .input-group#datetimepicker1
-          = a.text_field :date, class: 'form-control', data: { date_format: 'DD/MM/YYYY hh:mm A' }
-          %span.input-group-addon
-            %i.fa.fa-calendar
-      .form-group
-        = a.submit 'done', class: 'btn btn-success btn-block btn-border'
-      = debug @appointment.errors.full_messages
+              .row
+                .col-sm-12.check-box
+                  %label.item
+                    = check_box_tag 'appointment[service_ids][]', service.id, @appointment.services.include?(service.id)
+                    = service.name
+        .col-sm-6
+          .customer
+            .first_time
+              = a.fields_for :customer do |c|
+                .form-group.bg-lt.wrapper
+                  .row
+                    .col-xs-12
+                      .form-group
+                        = c.label :avatar
+                        = c.file_field :avatar, class: 'form-control'
+                  .row
+                    .col-xs-12
+                      .form-group
+                        = c.label :first_name
+                        = c.text_field :first_name, class: 'form-control'
+                  .row
+                    .col-xs-12
+                      .form-group
+                        = c.label :last_name
+                        = c.text_field :last_name, class: 'form-control'
+                  .row
+                    .col-xs-12
+                      .form-group
+                        = c.label :phone
+                        = c.telephone_field :phone, class: 'form-control'
+                  .row
+                    .col-xs-12
+                      .form-group
+                        = c.label :email
+                        = c.email_field :email, class: 'form-control'
+        .col-sm-12
+          .row  
+            .form-group
+              = a.label :date, 'Set appointment date'
+              .input-group#datetimepicker1
+                = a.text_field :date, class: 'form-control', data: { date_format: 'DD/MM/YYYY hh:mm A' }
+                %span.input-group-addon
+                  %i.fa.fa-calendar
+        .row
+          .col-sm-12
+            .form-group
+              = a.submit 'done', class: 'btn btn-success btn-block btn-border'

@@ -66,7 +66,7 @@ class AppointmentsController < ApplicationController
 
   def customer_keys
     if params[:appointment][:is_new_customer] == 'true'
-      [customer_attributes: [:first_name, :last_name, :phone, :email]]
+      [customer_attributes: [:first_name, :last_name, :phone, :email, :avatar]]
     else
       [:customer_id]
     end
