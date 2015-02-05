@@ -6,21 +6,35 @@
   .col-sm-3.wrapper-sm  
     %p.lead Customer
     .people
-      .user
+      .header
         .row
-          %h4.text-center First name: #{@appointment.customer.first_name}
-        .row
-          %h4.text-center Last name: #{@appointment.customer.last_name}
-        .row
-          %h5.text-center Phone:
-        .row
-          .text-center
-            = @appointment.customer.phone
-        .row
-          .link-box
-            .btn-group.btn-group-justified.wrapper-sm
-              = link_to 'show', @appointment.customer, class: 'btn btn-success'
-              = link_to 'edit', edit_customer_path(@appointment.customer), class: 'btn btn-primary'
+          .col-sm-5
+            .avatar
+              - if @appointment.customer.avatar.present?
+                = image_tag @appointment.customer.avatar, class: 'img-circle'
+              - else
+                = image_tag 'user_photo.jpg', class: 'img-circle'
+          .col-sm-7
+            .info
+              %p #{@appointment.customer.first_name} #{@appointment.customer.last_name}
+            .phone
+              %p +380 #{@appointment.customer.phone}
+        %hr
+      .people-content
+        .col-sm-4
+          = link_to(fa_icon('history'), @appointment.customer, class: 'btn btn-success btn-lg btn-border')
+        .col-sm-4.col-sm-offset-4
+          = link_to( fa_icon('edit'), edit_customer_path(@appointment.customer), class: 'btn btn-primary btn-lg btn-border')
+      .footer
+        .col-sm-4.text-center
+          = @appointment.customer.orders.count
+          ORDERS
+        .col-sm-4.text-center
+          = @appointment.customer.appointments.pending.count
+          PENDING
+        .col-sm-4.text-center
+          = @appointment.customer.appointments.canceled.count
+          CANCEL
     .row.wrapper
       - if @appointment.pending? && @appointment.order.nil?
         .row.wrapper-sm
