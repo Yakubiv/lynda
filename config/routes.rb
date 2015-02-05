@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :admins
-  root 'home#index'
+  root 'appointments#index'
   resources :services
   resources :orders, only: [:index, :show] do
     resources :receipts, only: [:create, :show, :new]
