@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
-  	if admin_signed_in?
-      redirect_to services_path
-    end
+	  http = Keen.publish_async(:customers, { first_name: "lox", :referred_by => "harry" })
+		http.callback { |response| puts "Success: #{response}"}
+		http.errback { puts "was a failurrr :,(" }
   end
 end

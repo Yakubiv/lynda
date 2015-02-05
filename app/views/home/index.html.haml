@@ -1,2 +1,18 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+%h2 Dashboard
+:javascript
+  var Keen=Keen||{configure:function(a,b,c){this._pId=a;this._ak=b;this._op=c},addEvent:function(a,b,c,d){this._eq=this._eq||[];this._eq.push([a,b,c,d])},setGlobalProperties:function(a){this._gp=a},onChartsReady:function(a){this._ocrq=this._ocrq||[];this._ocrq.push(a)}};
+  (function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://":"http://")+"dc8na2hxrj29i.cloudfront.net/code/keen-2.0.0-min.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();
+ 
+  // Configure the Keen object with your Project ID and API Key
+  Keen.configure("54d37b1790e4bd52dfde6003", "94542c02b1322e22d7e1dbe5a9352bbc8644e270642576edcddff8a2b5773e01817e5f0c9eb99ebdd297cb8284b740f206c8fd54426c6f5d37ff39c3f1273f44639e17357bc5065f7b5924ed94d043765d3cfc9d410ff07b9792cdd043187a3a43c6bcfa598cba58b4c3e8610bbdf1e4");
+
+%p appoint
+%p#appointment_analitic Appointments
+:javascript
+  Keen.onChartsReady(function() {
+    var appoin_metric = new Keen.Metric("view_appoint", {
+      analysisType: "count",
+      targetProperty: "status",
+      groupBy: "status"
+    });
+    profile_metric.draw(document.getElementById("appointment_analitic"));
