@@ -2,13 +2,12 @@
   .col-sm-8.col-sm-offset-2
     %h3.page-header.padder-v New appointment
     = form_for @appointment do |a|
-      .form-group
+      .form-group.text-center
         #radio_button
-          %p
+          %label
             #false
               = a.radio_button :is_new_customer, false, checked: true
               = a.label :is_new_customer_false, 'Existing customer'
-          %p
             #true
               = a.radio_button :is_new_customer, true
               = a.label :is_new_customer_true, 'New customer'
