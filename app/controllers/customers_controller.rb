@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
   before_action :authenticate_admin!
-  before_action :find_customer, only: [:show, :edit, :destroy, :update] 
-  
+  before_action :find_customer, only: [:show, :edit, :destroy, :update]
+
   def index
     if params[:search]
       @customers = Customer.search(params[:search]).paginate(page: params[:page], per_page: 8)
@@ -23,10 +23,10 @@ class CustomersController < ApplicationController
       render 'new'
     end
   end
-  
+
   def edit
   end
-  
+
   def update
     @customer.update_attributes(customer_params)
     redirect_to customers_path
@@ -45,6 +45,6 @@ class CustomersController < ApplicationController
 
  def customer_params
   params.require(:customer)
-        .permit(:first_name, :last_name, :phone, :email, :avatar)
+        .permit(:first_name, :last_name, :phone, :email, :avatar, :bio)
  end
 end

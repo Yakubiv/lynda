@@ -24,6 +24,11 @@
                 .phone
                   %p +380 #{customer.phone}
             %hr
+          .people-notes
+            - if customer.bio.present?
+              = truncate(customer.bio, lenght: 400)
+            - else
+              Place for notes :)
           .people-content
             .col-sm-4
               = link_to(fa_icon('history'), customer, class: 'btn btn-success btn-lg btn-border')

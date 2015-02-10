@@ -6,18 +6,21 @@
         .user-info
           .info-t
             %h3.wrapper-sm.text-center CUSTOMER
-          .wrapper-sm.text-center
-            %h4 Name:
-            %p.lead #{@customer.first_name} #{@customer.last_name}
-            %h4 Phone: 
-            %p.lead #{@customer.phone}
+          .info-c
+            %p #{@customer.first_name} #{@customer.last_name}
+            %p= @customer.phone
+            %p= @customer.email
+            %hr
+            .notes
+              %span{style: 'font-style: italic;'} Notes:
+              %p= @customer.bio
       .col-md-9
         %h3.text-center Apopintments
         .row.m-t-lg.text-center
           .col-md-4
             %p.lead Pending
             .row.m-t-lg
-              - @customer.appointments.each do |app| 
+              - @customer.appointments.each do |app|
                 -if app.pending?
                   %p
                     = link_to app.date.try(:strftime, "%B %d at %I:%M %p"), app
@@ -27,7 +30,7 @@
               - @customer.appointments.each do |app|
                 -if app.completed?
                   %p
-                    = link_to app.date.try(:strftime, "%B %d at %I:%M %p"), app
+                    = link_to app.date.try(:strftime, "%B %d at %I:%M %p"), app.order
           .col-md-4
             %p.lead Cenceled
             .row.m-t-lg

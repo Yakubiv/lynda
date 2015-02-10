@@ -20,6 +20,11 @@
             .phone
               %p +380 #{@order.customer.phone}
         %hr
+      .people-notes
+        - if @order.customer.bio.present?
+          = truncate(@order.customer.bio, lenght: 400)
+        - else
+          Place for notes :)
       .people-content
         .col-sm-4
           = link_to(fa_icon('history'), @order.customer, class: 'btn btn-success btn-lg btn-border')

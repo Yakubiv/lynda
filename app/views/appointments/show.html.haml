@@ -3,7 +3,7 @@
     %p.lead.page-header Appointment's date is #{@appointment.date.try(:strftime, "%B %d at %I:%M %p")}
 
 .row.m-t-xl
-  .col-sm-3.wrapper-sm  
+  .col-sm-3.wrapper-sm
     %p.lead Customer
     .people
       .header
@@ -20,6 +20,11 @@
             .phone
               %p +380 #{@appointment.customer.phone}
         %hr
+      .people-notes
+        - if @appointment.customer.bio.present?
+          = truncate(@appointment.customer.bio, lenght: 400)
+        - else
+          Place for notes :)
       .people-content
         .col-sm-4
           = link_to(fa_icon('history'), @appointment.customer, class: 'btn btn-success btn-lg btn-border')
@@ -51,7 +56,7 @@
             = a.radio_button :status, 'pending', checked: true
           %p
             = a.submit 'pending', confirm: 'Are you sure?', class: 'btn btn-block btn-default'
-  
+
   .col-sm-6.col-sm-offset-1
     - if @appointment.order.nil? && @appointment.pending?
       .row.wrapper-sm
