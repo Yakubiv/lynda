@@ -15,7 +15,7 @@ class ServicesController < ApplicationController
     if @service.save
       redirect_to services_path
     else
-      redirect_to new_service_path
+      redirect_to :new
       flash[:error] = "This fields should be filled"
     end
   end
@@ -28,8 +28,11 @@ class ServicesController < ApplicationController
   end
 
   def update
-    @service.update_attributes(service_params)
-    redirect_to services_path
+    if @service.update_attributes(service_params)
+      redirect_to services_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -44,6 +47,6 @@ class ServicesController < ApplicationController
   end
 
   def service_params
-    params.require(:service).permit(:name, :price, :cover)
+    params.require(:service).permit!
   end
 end

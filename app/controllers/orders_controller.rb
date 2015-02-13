@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @orders = Order.all.paginate(page: params[:page], per_page: 12)
   end
@@ -24,17 +24,9 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def update
-    
-  end
-
-  def destroy
-    
-  end
-
 private
 
   def order_params
-    params.require(:order).permit(:tips, :note, :customer_id, :appointment_id, service_ids: [])   
+    params.require(:order).permit(:tips, :note, :customer_id, :appointment_id, service_ids: [])
   end
 end

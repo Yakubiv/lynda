@@ -14,7 +14,7 @@ class ImagesController < ApplicationController
   	if @image.save
   		redirect_to order_path(@order)
   	else
-  		render 'new'
+  		render :new
   	end
   end
 
@@ -30,6 +30,7 @@ private
   end
 
   def image_params
-  	params.require(:image).permit(:file, :description, :order_id)
+  	params.require(:image)
+          .permit!
   end
 end

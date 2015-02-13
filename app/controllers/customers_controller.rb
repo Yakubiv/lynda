@@ -20,7 +20,7 @@ class CustomersController < ApplicationController
     if @customer.save
       redirect_to customers_path
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -28,8 +28,11 @@ class CustomersController < ApplicationController
   end
 
   def update
-    @customer.update_attributes(customer_params)
-    redirect_to customers_path
+    if @customer.update_attributes(customer_params)
+      redirect_to customers_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -45,6 +48,6 @@ class CustomersController < ApplicationController
 
  def customer_params
   params.require(:customer)
-        .permit(:first_name, :last_name, :phone, :email, :avatar, :bio)
+        .permit!
  end
 end

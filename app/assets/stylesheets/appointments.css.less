@@ -1,7 +1,7 @@
 @import "bootstrap/mixins.less";
 @import "bootstrap/variables.less";
 
-body{ 
+body{
     font-family: 'Montserrat','Helvetica Neue',Helvetica,Arial,sans-serif !important;
 }
 .appointment{
@@ -89,14 +89,15 @@ body{
     margin-bottom: 5px;
     font-weight: bold;
     position: relative;
+    cursor: pointer;
     left: 30%;
 }
 
 input[type=radio] {
-    display:none; 
+    display:none;
     margin:10px;
 }
- 
+
 input[type=radio] + label {
     margin:-2px;
     padding: 4px 12px;
@@ -104,7 +105,7 @@ input[type=radio] + label {
     border-color: #ddd;
 }
 
-input[type=radio]:checked + label { 
+input[type=radio]:checked + label {
    background-image: none;
     background-color:#d0d0d0;
 }

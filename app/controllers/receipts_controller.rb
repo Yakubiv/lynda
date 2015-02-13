@@ -1,5 +1,6 @@
 class ReceiptsController < ApplicationController
   before_action :authenticate_admin!
+
   def index
     @receipts = Receipt.all
   end
@@ -24,7 +25,7 @@ class ReceiptsController < ApplicationController
 private
 
   def receipt_params
-    params.require(:receipt).permit(:total_cash, :total_services, :order_id)
+    params.require(:receipt).permit!
   end
-  
+
 end

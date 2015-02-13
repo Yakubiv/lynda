@@ -6,13 +6,10 @@
       .service
         .service-cover{style: "background-image: url('#{s.cover}')" }
           .cover-overlay
-            %div.bg-t
-              .col-xs-1{style: 'z-index: 9999;'}
-                = link_to(fa_icon('edit'), edit_service_path(s))
-              .col-xs-1.col-xs-offset-7
-                = link_to(fa_icon('trash'), service_path(s), method: :delete)
+            .col-xs-1.col-xs-offset-11
+              = link_to(fa_icon('trash'), service_path(s), method: :delete)
             .wrapper-sm
               %h4 Name: #{s.name}
               %h4 Price: #{s.price} ₴
           .service-bottom
-            = link_to 'view', s, class: 'btn btn-block btn-info btn-service'
+            = link_to 'edit', edit_service_path(s), class: 'btn btn-block btn-info btn-service'
