@@ -1,3 +1,3 @@
-= link_to 'pending', appointments_path, class: "btn btn-default #{'active' if params[:action] == 'index'}"
-= link_to 'orders', orders_path, class: "btn btn-default #{'active' if params[:action] == 'completed'}"
+= link_to 'pending', appointments_path, class: "btn btn-default #{'active' if controller_name == 'appointments' && params[:action] == 'index'}"
+= link_to 'orders', orders_path, class: "btn btn-default #{'active' if controller_name == 'orders'}"
 = link_to 'canceled', canceled_appointments_path, class: "btn btn-default #{'active' if params[:action] == 'canceled'}"
