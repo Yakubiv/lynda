@@ -3,14 +3,16 @@
     %h3.page-header.padder-v New appointment
     = form_for @appointment do |a|
       .form-group
-        #radio_button
-          %label
-            #false
-              = a.radio_button :is_new_customer, false, checked: true
-              = a.label :is_new_customer_false, 'Existing customer'
-            #true
-              = a.radio_button :is_new_customer, true
-              = a.label :is_new_customer_true, 'New customer'
+        .row
+          .col-xs-8.col-sm-10.col-md-9.col-xs-offset-3.col-sm-offset-1.col-md-offset-3
+            #radio_button
+              %label
+                #false
+                  = a.radio_button :is_new_customer, false, checked: true
+                  = a.label :is_new_customer_false, 'Existing customer'
+                #true
+                  = a.radio_button :is_new_customer, true
+                  = a.label :is_new_customer_true, 'New customer'
       .form-group
         .col-sm-6
           .old_customer
@@ -54,7 +56,7 @@
                         = c.label :email
                         = c.email_field :email, class: 'form-control'
         .col-sm-12
-          .row  
+          .row
             .form-group
               = a.label :date, 'Set appointment date'
               .input-group#datetimepicker1

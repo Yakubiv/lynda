@@ -20,3 +20,9 @@ $(document).ready ->
 
 $(document).ready ->
   $("#radio-cancel").hide()
+
+$(document).ready ->
+  $('[data-toggle=offcanvas]').click ->
+    $('.row-offcanvas').toggleClass 'active'
+    return
+  return
