@@ -1,6 +1,10 @@
 .navbar-header
+  %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+    %span.icon-bar
+    %span.icon-bar
+    %span.icon-bar
   %a.navbar-brand{href: appointments_path} BeautySpa
-#navbar
+#navbar.navbar-collapse.collapse
   %ul.nav.navbar-nav.navbar-right
     - if admin_signed_in?
       %li= link_to(fa_icon('power-off'), destroy_admin_session_path, method: :delete)

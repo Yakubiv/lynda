@@ -9,16 +9,12 @@
   %body
     .navbar.navbar-default.navbar-fixed-top.navbar-op
       .container-fluid
-        %button.navbar-toggle{"data-target" => ".sidebar-nav", "data-toggle" => "offcanvas", :type => "button"}
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
         = render 'layouts/navbar'
     .container-fluid
-      .row.row-offcanvas.row-offcanvas-left
+      .row.row-offcanvas.m-t-xl
         - if admin_signed_in?
           .col-xs-12.col-sm-3.col-md-2.m-t-xl
-            #sidebar.list-group.sidebar.sidebar-offcanvas
+            .list-group
               = render 'layouts/linklist'
         .col-xs-12.col-sm-9.col-md-10.m-t-xl
           = yield
