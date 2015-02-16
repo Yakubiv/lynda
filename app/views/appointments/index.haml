@@ -1,13 +1,13 @@
 .row.m-t-lg
-  .col-md-12
+  .col-xs-12.col-sm-12.col-md-12
     %h2.page-header #{@header} appointments
 .row
-  .col-md-12
+  .col-xs-12.col-sm-12.col-md-12
     .btn-group.btn-group-justified
       = render 'links'
 .row.m-t-lg
   - @appointments.each do |a|
-    .col-md-3
+    .col-xs-12.col-sm-6.col-md-3
       .appointment
         .appointment-cover
           %h4.text-center.padder-t-sm #{link_to "#{a.customer.first_name} #{a.customer.last_name}", a.customer, class: 'btn'}
@@ -21,9 +21,9 @@
           %h5.text-center #{link_to "Appointment's date is #{a.date.try(:strftime, "%B %d at %I:%M %p")}", a}
           %hr
         .row.wrapper
-          .col-xs-1
+          .col-xs-1.col-sm-1.col-md-1
             = link_to(fa_icon('edit'), edit_appointment_path(a))
-          .col-xs-1.col-xs-offset-9
+          .col-xs-1.col-sm-1.col-md-1.col-xs-offset-10.col-sm-offset-9.col-md-offset-8
             = link_to(fa_icon('trash'), appointment_path(a), method: :delete)
 .row.m-t-lg
   = will_paginate @appointments
