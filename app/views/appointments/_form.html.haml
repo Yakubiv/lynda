@@ -1,69 +1,70 @@
-.row
+.row.m-t-lg
   .col-sm-8.col-sm-offset-2
-    %h3.page-header.padder-v New appointment
-    = form_for @appointment do |a|
-      .form-group
-        .row
-          .col-xs-12.col-sm-10.col-md-9.col-sm-offset-1.col-md-offset-3
-            #radio_button
-              %label
-                #false
-                  = a.radio_button :is_new_customer, false, checked: true
-                  = a.label :is_new_customer_false, 'Existing customer'
-                #true
-                  = a.radio_button :is_new_customer, true
-                  = a.label :is_new_customer_true, 'New customer'
-      .form-group
-        .col-sm-6
-          .old_customer
-            = a.collection_select(:customer_id, Customer.all, :id, :last_name,  include_blank: 'Please select')
-          %h4 Services
+    .new-appointment
+      %h4.page-header.text-muted New appointment
+      = form_for @appointment do |a|
+        .form-group
           .row
-            - Service.all.each do |service|
-              .row
-                .col-sm-12.check-box
-                  %label.item
-                    = check_box_tag 'appointment[service_ids][]', service.id, @appointment.services.include?(service.id)
-                    = service.name
-        .col-sm-6
-          .customer
-            .first_time
-              = a.fields_for :customer do |c|
-                .form-group.bg-lt.wrapper
-                  .row
-                    .col-xs-12
-                      .form-group
-                        = c.label :avatar
-                        = c.file_field :avatar, class: 'form-control'
-                  .row
-                    .col-xs-12
-                      .form-group
-                        = c.label :first_name
-                        = c.text_field :first_name, class: 'form-control'
-                  .row
-                    .col-xs-12
-                      .form-group
-                        = c.label :last_name
-                        = c.text_field :last_name, class: 'form-control'
-                  .row
-                    .col-xs-12
-                      .form-group
-                        = c.label :phone
-                        = c.telephone_field :phone, class: 'form-control'
-                  .row
-                    .col-xs-12
-                      .form-group
-                        = c.label :email
-                        = c.email_field :email, class: 'form-control'
-        .col-sm-12
-          .row
-            .form-group
-              = a.label :date, 'Set appointment date'
-              .input-group#datetimepicker1
-                = a.text_field :date, class: 'form-control', data: { date_format: 'DD/MM/YYYY hh:mm A' }
-                %span.input-group-addon
-                  %i.fa.fa-calendar
-        .row
+            .col-xs-12.col-sm-10.col-md-9.col-sm-offset-1.col-md-offset-3
+              #radio_button
+                %label
+                  #false
+                    = a.radio_button :is_new_customer, false, checked: true
+                    = a.label :is_new_customer_false, 'Existing customer'
+                  #true
+                    = a.radio_button :is_new_customer, true
+                    = a.label :is_new_customer_true, 'New customer'
+        .form-group
+          .col-sm-6
+            .old_customer
+              = a.collection_select :customer_id, Customer.all, :id, :last_name, {include_blank: 'Select customer'}, {class: 'form-control'}
+            %h4 Services
+            .row
+              - Service.all.each do |service|
+                .row
+                  .col-sm-12.check-box
+                    %label.item
+                      = check_box_tag 'appointment[service_ids][]', service.id, @appointment.services.include?(service.id)
+                      = service.name
+          .col-sm-6
+            .customer
+              .first_time
+                = a.fields_for :customer do |c|
+                  .form-group.bg-lt.wrapper
+                    .row
+                      .col-xs-12
+                        .form-group
+                          = c.label :avatar
+                          = c.file_field :avatar, class: 'form-control'
+                    .row
+                      .col-xs-12
+                        .form-group
+                          = c.label :first_name
+                          = c.text_field :first_name, class: 'form-control'
+                    .row
+                      .col-xs-12
+                        .form-group
+                          = c.label :last_name
+                          = c.text_field :last_name, class: 'form-control'
+                    .row
+                      .col-xs-12
+                        .form-group
+                          = c.label :phone
+                          = c.telephone_field :phone, class: 'form-control'
+                    .row
+                      .col-xs-12
+                        .form-group
+                          = c.label :email
+                          = c.email_field :email, class: 'form-control'
           .col-sm-12
-            .form-group
-              = a.submit 'done', class: 'btn btn-success btn-block btn-border'
+            .row
+              .form-group
+                = a.label :date, 'Set appointment date'
+                .input-group#datetimepicker1
+                  = a.text_field :date, class: 'form-control', data: { date_format: 'DD/MM/YYYY hh:mm A' }
+                  %span.input-group-addon
+                    %i.fa.fa-calendar
+          .row
+            .col-sm-12
+              .form-group
+                = a.submit 'done', class: 'btn btn-success btn-block btn-border'

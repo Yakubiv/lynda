@@ -19,7 +19,6 @@
 //= require appointments
 //= require bootstrap-datetimepicker
 //= require validations
-//= require_tree .
 
 //= require bootstrap/transition
 //= require bootstrap/carousel
