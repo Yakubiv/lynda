@@ -15,7 +15,7 @@
               %span{style: 'font-style: italic;'} Notes:
               %p= @customer.bio
       .col-md-9
-        %h3.text-center Apopintments
+        %h3.text-center Appointments
         .row.m-t-lg.text-center
           .col-md-4
             %p.lead Pending
@@ -32,7 +32,7 @@
                   %p
                     = link_to app.date.try(:strftime, "%B %d at %I:%M %p"), app.order
           .col-md-4
-            %p.lead Cenceled
+            %p.lead Cancelled
             .row.m-t-lg
               - @customer.appointments.each do |app|
                 -if app.canceled?

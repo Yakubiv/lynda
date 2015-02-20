@@ -1,13 +1,13 @@
 .row.m-t-lg
   .col-md-12
-    %h2.page-header All orders
+    %h2.page-header.text-muted All orders
 .row
   .col-md-12
     .btn-group.btn-group-justified
       = render 'appointments/links'
 .row.m-t-lg
   - @orders.each do |a|
-    .col-md-3
+    .cpl-xs-12.col-sm-6.col-md-3
       .order
         .appointment-cover
           %h4.text-center.padder-t-sm #{link_to "#{a.customer.first_name} #{a.customer.last_name}", a.customer, class: 'btn'}
@@ -23,7 +23,7 @@
         .wrapper-sm
           .row
             .col-sm-3
-              %h4 Tips: 
+              %h4 Tips:
             .col-sm-9
               %h4 #{a.tips} ₴
           .row
