@@ -25,5 +25,6 @@
             = link_to(fa_icon('edit'), edit_appointment_path(a))
           .col-xs-1.col-sm-1.col-md-1.col-xs-offset-10.col-sm-offset-9.col-md-offset-8
             = link_to(fa_icon('trash'), appointment_path(a), method: :delete)
+#appointment-metrics
 .row.m-t-lg
   = will_paginate @appointments

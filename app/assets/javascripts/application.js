@@ -19,6 +19,7 @@
 //= require appointments
 //= require bootstrap-datetimepicker
 //= require validations
+//= require metrics
 
 //= require bootstrap/transition
 //= require bootstrap/carousel

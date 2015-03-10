@@ -1,0 +1,20 @@
+keen = new Keen(
+  projectId: '<%= ENV['KEEN_PROJECT_ID'] %>'
+  readKey: '<%= ENV['KEEN_READ_KEY'] %>'
+)
+$(document).on "ready page:load", ->
+  query = new Keen.Query("count",
+    eventCollection: "appointments"
+    timeframe: "this_14_days"
+    interval: "daily"
+    groupBy: "appointment.status"
+  )
+  keen.draw query, document.getElementById("appointment-metrics"), {
+    title: 'Appoinments in last 14 days'
+    chartType: 'columnchart'
+    chartOptions:
+      hAxis:
+        format: "MMM d"
+        gridlines:
+          count: 14
+  }
