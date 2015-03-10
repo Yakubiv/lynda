@@ -7,10 +7,4 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .container-fluid
-      .row.row-offcanvas
-        - if admin_signed_in?
-          .col-xs-12.col-sm-3.col-md-2
-            = render 'layouts/linklist'
-        .col-xs-12.col-sm-9.col-md-10
-          = yield
+    = yield

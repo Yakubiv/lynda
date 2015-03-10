@@ -1,1 +1,8 @@
-%section{style: 'color: black'}
+%section.wrapper-sm.bg
+  .row.padder-v.home-content
+    .col-sm-5.col-sm-offset-1.text-center
+      %h2 Ready to organize your own business?
+      %p click 'Get started'
+      = link_to 'Get Started', new_admin_session_path, class: 'btn btn-lg btn-success'
+    .col-sm-5
+      = image_tag 'main.png', class: 'img-main'
