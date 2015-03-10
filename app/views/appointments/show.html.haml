@@ -10,19 +10,19 @@
         .row
           .col-sm-5
             .avatar
-              - if @appointment.customer.avatar.present?
-                = image_tag @appointment.customer.avatar, class: 'img-circle'
+              - if @appointment.avatar.present?
+                = image_tag @appointment.avatar, class: 'img-circle'
               - else
                 = image_tag 'user_photo.jpg', class: 'img-circle'
           .col-sm-7
             .info
-              %p #{@appointment.customer.first_name} #{@appointment.customer.last_name}
+              %p #{@appointment.first_name} #{@appointment.last_name}
             .phone
-              %p +380 #{@appointment.customer.phone}
+              %p +380 #{@appointment.phone}
         %hr
       .people-notes
         - if @appointment.customer.bio.present?
-          = truncate(@appointment.customer.bio, lenght: 400)
+          = truncate(@appointment.bio, lenght: 400)
         - else
           Place for notes :)
       .people-content
@@ -48,14 +48,14 @@
             #radio-cancel
               = a.radio_button :status, 'canceled', checked: true
             %p
-              = a.submit 'CANCEL', confirm: 'Are you sure?', class: 'btn btn-block btn-default'
+              = a.submit 'CANCEL', data: {confirm: 'Are you sure?'}, class: 'btn btn-block btn-default'
       - if @appointment.canceled?
         %p.lead.text-center Again add to pending?
         = form_for @appointment do |a|
           #radio-cancel
             = a.radio_button :status, 'pending', checked: true
           %p
-            = a.submit 'pending', confirm: 'Are you sure?', class: 'btn btn-block btn-default'
+            = a.submit 'pending', data: {confirm: 'Are you sure?'}, class: 'btn btn-block btn-default'
 
   .col-sm-6.col-sm-offset-1
     - if @appointment.order.nil? && @appointment.pending?

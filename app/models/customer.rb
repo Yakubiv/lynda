@@ -8,6 +8,6 @@ class Customer < ActiveRecord::Base
 	default_scope {order(last_name: :ASC)}
 
 	def self.search(query)
-	  where('first_name ilike ? OR last_name ilike ?', "%#{query}%", "%#{query}%") 
+	  where('first_name ilike ? OR last_name ilike ?', "%#{query}%", "%#{query}%")
 	end
 end
