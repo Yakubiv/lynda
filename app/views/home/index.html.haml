@@ -1,8 +1,34 @@
-%section.wrapper-sm.bg
-  .row.padder-v.home-content
+%section.wrapper-sm.bg-t
+  .row.padder-v.t-content
     .col-sm-5.col-sm-offset-1.text-center
       %h2 Ready to organize your own business?
       %p click 'Get started'
       = link_to 'Get Started', new_admin_session_path, class: 'btn btn-lg btn-success'
     .col-sm-5
       = image_tag 'main.png', class: 'img-main'
+%section.wrapper-sm.bg-m
+  .row.padder-v.text-center
+    .col-sm-3
+      = image_tag 'service.gif', class: 'img-m-c'
+      %h3.lead Add your own service!
+    .col-sm-3
+      = image_tag 'appoint.png', class: 'img-m-c'
+      %h3.lead Create appointments!
+    .col-sm-3
+      = image_tag 'customers.png', class: 'img-m-c'
+      %h3.lead Add customers!
+    .col-sm-3
+      = image_tag 'money.png', class: 'img-m-c'
+      %h3.lead Control your business income!
+%section.wrapper-sm.bg-f
+  .row.padder-v
+    .col-sm-4.wrapper
+      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      %h5 Pedro Yakubiv, Founder
+    .col-sm-4
+      %h4 Manageside
+    .col-sm-4
+      %h4 Contacts
+  .row.text-center
+    .col-sm-12
+      %p manageside.com 2014. All rights reserved.
