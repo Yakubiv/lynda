@@ -4,34 +4,24 @@
       .row
         .col-sm-6
           .form-group
-            = image_tag 'user_photo.jpg',class: 'media-object'
+            = c.label :first_name
+            = c.text_field :first_name, class: 'form-control'
+          .form-group
+            = c.label :last_name
+            = c.text_field :last_name, class: 'form-control'
+          .form-group
+            = c.label :avatar
+            = c.file_field :avatar, class: 'form-control'
+          .form-group
+            = c.label :phone
+            = c.telephone_field :phone, class: 'form-control'
+          .form-group
+            = c.label :email
+            = c.email_field :email, class: 'form-control'
         .col-sm-6
           .form-group
             = c.label :bio, 'Notes'
             = c.text_area :bio, class: 'form-control', rows: 8
-      .row
-        .col-sm-6
-          .form-group
-            = c.label :avatar
-            = c.file_field :avatar, class: 'form-control'
-      .row
-        .col-sm-6
-          .form-group
-            = c.label :first_name
-            = c.text_field :first_name, class: 'form-control'
-        .col-sm-6
-          .form-group
-            = c.label :last_name
-            = c.text_field :last_name, class: 'form-control'
-      .row
-        .col-sm-6
-          .form-group
-            = c.label :phone
-            = c.telephone_field :phone, class: 'form-control'
-        .col-sm-6
-          .form-group
-            = c.label :email
-            = c.email_field :email, class: 'form-control'
       .row
         .col-md-12
           .form-group

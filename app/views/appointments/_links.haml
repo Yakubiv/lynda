@@ -1,3 +1,5 @@
-= link_to 'pending', appointments_path, class: "btn btn-default #{'active' if controller_name == 'appointments' && params[:action] == 'index'}"
-= link_to 'orders', orders_path, class: "btn btn-default #{'active' if controller_name == 'orders'}"
-= link_to 'canceled', canceled_appointments_path, class: "btn btn-default #{'active' if params[:action] == 'canceled'}"
+.header-tabs
+  %ul
+    %li= link_to fa_icon('spinner') + ' pending', appointments_path, class: "#{'active' if controller_name == 'appointments' && params[:action] == 'index'}"
+    %li= link_to fa_icon('check-circle')+' orders', orders_path, class: "#{'active' if controller_name == 'orders'}"
+    %li= link_to fa_icon('times-circle')+' canceled', canceled_appointments_path, class: "#{'active' if params[:action] == 'canceled'}"

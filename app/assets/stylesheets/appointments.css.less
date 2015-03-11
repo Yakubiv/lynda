@@ -130,3 +130,35 @@ input[type=radio]:checked + label {
     position: relative;
 }
 
+.header-tabs{
+    padding: 0px;
+    li{
+        list-style-type: none;
+        display: block;
+        transition: background .15s ease;
+        float: left;
+        padding: 0px;
+        width: 33%;
+        text-align: center;
+        a{
+            margin-right: 0px;
+            color: #1976D2;
+            padding: 20px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            text-decoration: none;
+            font-size: large;
+        }
+        .active{
+            border-bottom: 2px solid #1976D2;
+        }
+    }
+}
+
+.list-group-item{
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    text-decoration: none;
+}
+
