@@ -2,7 +2,8 @@
   .row
     .col-sm-12.col-xs-12.col-md-5.col-md-offset-5
       .login-form
-        .text-center= image_tag 'badge.jpg', class: 'img-b'
+        = link_to root_path do
+          .text-center= image_tag 'badge.jpg', class: 'img-b'
         %h2.text-center Login to your business account
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           = devise_error_messages!
@@ -15,4 +16,4 @@
               = f.check_box :remember_me
               = f.label :remember_me
           %p.padder-v
-            = f.submit "Log in", class: 'btn btn-lg btn-block'
+            = f.submit "Login", class: 'btn btn-lg btn-block'
