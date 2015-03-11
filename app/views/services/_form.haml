@@ -19,6 +19,7 @@
       .col-md-6
         .form-group
           = s.file_field :cover, class: 'form-control'
+          = s.hidden_field :cover_cache
       .col-md-6
         .form-group
           = image_tag @service.cover.thumb
