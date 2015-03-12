@@ -1,45 +1,54 @@
 .row
-  .col-sm-10.col-md-10.col-md-offset-1
-    %h2.page-header.padder-v Edit appointment
-    = form_for @appointment do |a|
-      .form-group
-        %p.lead Change status
-        %p
-          = a.radio_button :status, 'canceled'
-          = a.label :status_canceled, 'Cancel'
-        %h4.page-header Edit customer
-        .customer
-          = a.fields_for :customer do |c|
-            .form-group.bg-lt.wrapper
-              .row
-                .col-xs-6
-                  .form-group
-                    = c.label :first_name, 'First name'
-                    = c.text_field :first_name, class: 'form-control'
-                .col-xs-6
-                  .form-group
-                    = c.label :last_name, 'Last Name'
-                    = c.text_field :last_name, class: 'form-control'
-              .row
-                .col-xs-12
-                  .form-group
-                    = c.label :phone, 'Phone'
-                    = c.telephone_field :phone, class: 'form-control'
-      .form-group
-        .row
-          .col-sm-12
-            %h4 Services
-        .row
-          .col-md-12.check-box
-            - Service.all.each do |service|
-              %label.item
-                = check_box_tag 'appointment[service_ids][]', service.id, @appointment.service_ids.include?(service.id)
-                = service.name
-      .form-group
-        = a.label :date, 'Set appointment date'
-        .input-group#datetimepicker1
-          = a.text_field :date, class: 'form-control', data: { date_format: 'DD/MM/YYYY hh:mm A' }
-          %span.input-group-addon
-            %i.fa.fa-calendar
-      .form-group
-        = a.submit 'done', class: 'btn btn-success btn-block btn-border'
+  .col-sm-4.col-sm-offset-4
+    %h3.padder-v.header-title
+      %i.fa.fa-calendar.fa-2x.m-r-sm
+      edit an APPOINTMENT
+    .new-appointment
+      = form_for @appointment do |a|
+        .form-group
+          .customer.m-t-sm
+            = a.fields_for :customer do |c|
+              .form-group.bg-lt.wrapper
+                .row
+                  .col-xs-12
+                    .form-group
+                      = c.label :avatar
+                      = c.file_field :avatar, class: 'form-control'
+                .row
+                  .col-xs-12
+                    .form-group
+                      = c.label :first_name
+                      = c.text_field :first_name, class: 'form-control'
+                .row
+                  .col-xs-12
+                    .form-group
+                      = c.label :last_name
+                      = c.text_field :last_name, class: 'form-control'
+                .row
+                  .col-xs-12
+                    .form-group
+                      = c.label :phone
+                      = c.telephone_field :phone, class: 'form-control'
+                .row
+                  .col-xs-12
+                    .form-group
+                      = c.label :email
+                      = c.email_field :email, class: 'form-control'
+        .form-group
+          .row
+            .col-sm-12
+              %h4 Services
+          .row
+            .col-md-12.check-box
+              - Service.all.each do |service|
+                %label.item
+                  = check_box_tag 'appointment[service_ids][]', service.id, @appointment.service_ids.include?(service.id)
+                  = service.name
+        .form-group
+          = a.label :date, 'Set appointment date'
+          .input-group#datetimepicker1
+            = a.text_field :date, class: 'form-control', data: { date_format: 'DD/MM/YYYY hh:mm A' }
+            %span.input-group-addon
+              %i.fa.fa-calendar
+        .form-group
+          = a.submit 'done', class: 'btn btn-primary btn-block btn-border'

@@ -1,12 +1,24 @@
 .m-t-xl
   .list-group
-    = link_to fa_icon('calendar')+' appointments', appointments_path, class: "list-group-item #{'active' if controller_name == 'appointments' && params[:action] == 'index' || params[:action] == 'completed' || params[:action] == 'canceled'}"
-    = link_to(fa_icon('plus')+ ' appointment', new_appointment_path, class: "list-group-item #{'active' if controller_name == 'appointments' && params[:action] == 'new'}")
-    = link_to fa_icon('users') + ' Customers', customers_path, class: "list-group-item #{'active' if controller_name == 'customers' && params[:action] == 'index'}"
-    = link_to fa_icon('plus')+ ' customer', new_customer_path, class: "list-group-item #{'active' if controller_name == 'customers' && params[:action] == 'new'}"
-    = link_to fa_icon('gears')+' Services', services_path, class: "list-group-item #{'active' if controller_name == 'services' && params[:action] == 'index'}"
-    = link_to fa_icon('plus')+' service', new_service_path, class: "list-group-item #{'active' if controller_name == 'services' && params[:action] == 'new'}"
+    = link_to appointments_path, class: "list-group-item #{'active' if controller_name == 'appointments' && params[:action] == 'index' || params[:action] == 'completed' || params[:action] == 'canceled'}" do
+      %i.fa.fa-calendar.m-r-sm
+      appointments
+    = link_to new_appointment_path, class: "list-group-item #{'active' if controller_name == 'appointments' && params[:action] == 'new'}" do
+      %i.fa.fa-plus.m-r-sm
+      appointment
+    = link_to customers_path, class: "list-group-item #{'active' if controller_name == 'customers' && params[:action] == 'index'}" do
+      %i.fa.fa-users.m-r-xs
+      Customers
+    = link_to new_customer_path, class: "list-group-item #{'active' if controller_name == 'customers' && params[:action] == 'new'}" do
+      %i.fa.fa-plus.m-r-sm
+      customer
+    = link_to services_path, class: "list-group-item #{'active' if controller_name == 'services' && params[:action] == 'index'}" do
+      %i.fa.fa-gears.m-r-xs
+      Services
+    = link_to new_service_path, class: "list-group-item #{'active' if controller_name == 'services' && params[:action] == 'new'}" do
+      %i.fa.fa-plus.m-r-sm
+      service
     - if admin_signed_in?
       = link_to destroy_admin_session_path, method: :delete, title: 'Log Out', class: 'list-group-item list-group-item-danger' do
-        %i.fa.fa-sign-out
+        %i.fa.fa-sign-out.m-r-sm
         Sign Out

@@ -150,9 +150,13 @@ input[type=radio]:checked + label {
             text-decoration: none;
             font-size: large;
         }
-        .active{
-            border-bottom: 2px solid #1976D2;
+        &:hover{
+            background-color: #BBDEFB;
         }
+        &.active{
+            border-bottom: 2px solid #E91E63 !important;
+        }
+
     }
 }
 
@@ -161,4 +165,16 @@ input[type=radio]:checked + label {
     letter-spacing: .05em;
     text-decoration: none;
 }
+.header-title {
+background-color: aliceblue;
+padding: 5px;
+font-family: fantasy;
+}
 
+.thumb-user{
+    height: 250px;
+    width: 250px;
+}
+.btn-sircle{
+    border-radius: 20px !important;
+}

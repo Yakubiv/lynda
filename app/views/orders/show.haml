@@ -1,61 +1,50 @@
 .row.m-t-xl
-  .col-sm-12
-    %p.lead.page-header Appointment's date is #{@order.appointment.date.try(:strftime, "%B %d at %I:%M %p")}
-
-.row.m-t-xl
-  .col-sm-3.wrapper-sm  
-    %p.lead Customer
-    .people
-      .header
+  .col-sm-11
+    %p.lead Appointment's date is #{@order.appointment.date.try(:strftime, "%B %d at %I:%M %p")}
+    %hr
+  .col-sm-1
+    %a.btn.btn-primary.btn-block.btn-border.btn-sircle{"data-target" => "#add-img", "data-toggle" => "modal", "data-placement" => "top", "title" => "Add image"}
+      %i.fa.fa-plus.fa-2x
+  #add-img.modal.fade{"aria-hidden" => "true"}
+    .modal-dialog.modal-content
+      .modal-header
         .row
-          .col-sm-5
-            .avatar
-              - if @order.customer.avatar.present?
-                = image_tag @order.customer.avatar, class: 'img-circle'
-              - else
-                = image_tag 'user_photo.jpg', class: 'img-circle'
-          .col-sm-7
-            .info
-              %p #{@order.customer.first_name} #{@order.customer.last_name}
-            .phone
-              %p +380 #{@order.customer.phone}
-        %hr
-      .people-notes
-        - if @order.customer.bio.present?
-          = truncate(@order.customer.bio, lenght: 400)
-        - else
-          Place for notes :)
-      .people-content
-        .col-sm-4
-          = link_to(fa_icon('history'), @order.customer, class: 'btn btn-success btn-lg btn-border')
-        .col-sm-4.col-sm-offset-4
-          = link_to( fa_icon('edit'), edit_customer_path(@order.customer), class: 'btn btn-primary btn-lg btn-border')
-      .footer
-        .col-sm-4.text-center
-          = @order.customer.orders.count
-          ORDERS
-        .col-sm-4.text-center
-          = @order.customer.appointments.pending.count
-          PENDING
-        .col-sm-4.text-center
-          = @order.customer.appointments.canceled.count
-          CANCEL
-  .col-sm-9
-    %p.lead Add images to order
-    .col-sm-6.col-sm-offset-3
-      = render 'images/image_form'
+          .col-sm-11
+            %p.lead Add images to order
+          .col-sm-1
+            %a{"data-dismiss"=>"modal"}
+              %i.fa.fa-close.text-muted
+      .modal-body
+        = render 'images/image_form'
+
 .row
-  .col-sm-12    
+  .col-sm-3.wrapper-sm.text-center
+    - if @order.customer.avatar.present?
+      = image_tag @order.customer.avatar, class: 'img-circle thumb-user'
+    - else
+      = image_tag 'user_photo.jpg', class: 'img-circle thumb-user'
+    %h3 #{@order.customer.first_name} #{@order.customer.last_name}
+    %p +380 #{@order.customer.phone}
+    %hr
+    - if @order.customer.bio.present?
+      = truncate(@order.customer.bio, lenght: 400)
+    - else
+      Place for notes :)
+
+  .col-sm-9
     .form-group
       %p.lead Order's images
-      - @order.images.each do |i|
-        - if i.persisted?
-          .col-sm-3
-            .image
-              %a{href:'#', "data-target" => "#image_#{i.id}", "data-toggle" => "modal"}
-                .file{style: "background-image: url('#{i.file}')"}
-                .description.wrapper-sm
-                  = i.description
+      - if @order.images.any?
+        - @order.images.each do |i|
+          - if i.persisted?
+            .col-sm-3
+              .image
+                %a{"data-target" => "#image_#{i.id}", "data-toggle" => "modal"}
+                  .file{style: "background-image: url('#{i.file}')"}
+                  .description.wrapper-sm
+                    = i.description
+      - else
+        %h3.text-muted No images found :(
 - @order.images.each do |i|
   - if i.persisted?
     .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myLargeModalLabel", :role => "dialog", :tabindex => "-1", "id"=>"image_#{i.id}"}

@@ -1,5 +1,8 @@
 .row.m-t-lg
-  %h3.text-center Change customer data
-.row.m-t-lg
   .col-md-10.col-md-offset-1
-    = render 'form'
+    %h3.header-title
+      %i.fa.fa-pensil
+      edit CUSTOMER
+    .new-customer-form
+      = form_for @customer do |c|
+        = render 'form', c: c

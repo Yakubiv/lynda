@@ -16,12 +16,9 @@
   .form-group
     %p.lead Add cover for service
     .row
-      .col-md-6
+      .col-md-12
         .form-group
           = s.file_field :cover, class: 'form-control'
           = s.hidden_field :cover_cache
-      .col-md-6
-        .form-group
-          = image_tag @service.cover.thumb
   .form-group
-    = s.submit 'Done', class: 'btn btn-block btn-success btn-border'
+    = s.submit 'Done', class: 'btn btn-block btn-primary btn-border'

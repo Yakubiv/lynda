@@ -1,61 +1,37 @@
-.row.m-t-xl
-  .col-sm-12
-    %p.lead.page-header Appointment's date is #{@appointment.date.try(:strftime, "%B %d at %I:%M %p")}
-
-.row.m-t-xl
-  .col-sm-3.wrapper-sm
-    %p.lead Customer
-    .people
-      .header
-        .row
-          .col-sm-5
-            .avatar
-              - if @appointment.avatar.present?
-                = image_tag @appointment.avatar, class: 'img-circle'
-              - else
-                = image_tag 'user_photo.jpg', class: 'img-circle'
-          .col-sm-7
-            .info
-              %p #{@appointment.first_name} #{@appointment.last_name}
-            .phone
-              %p +380 #{@appointment.phone}
-        %hr
-      .people-notes
-        - if @appointment.customer.bio.present?
-          = truncate(@appointment.bio, lenght: 400)
-        - else
-          Place for notes :)
-      .people-content
-        .col-sm-4
-          = link_to(fa_icon('history'), @appointment.customer, class: 'btn btn-success btn-lg btn-border')
-        .col-sm-4.col-sm-offset-4
-          = link_to( fa_icon('edit'), edit_customer_path(@appointment.customer), class: 'btn btn-primary btn-lg btn-border')
-      .footer
-        .col-sm-4.text-center
-          = @appointment.customer.orders.count
-          ORDERS
-        .col-sm-4.text-center
-          = @appointment.customer.appointments.pending.count
-          PENDING
-        .col-sm-4.text-center
-          = @appointment.customer.appointments.canceled.count
-          CANCEL
-    .row.wrapper
-      - if @appointment.pending? && @appointment.order.nil?
-        .row.wrapper-sm
-          %p.lead.text-center Do you want to cancel it?
-          = form_for @appointment do |a|
-            #radio-cancel
-              = a.radio_button :status, 'canceled', checked: true
-            %p
-              = a.submit 'CANCEL', data: {confirm: 'Are you sure?'}, class: 'btn btn-block btn-default'
-      - if @appointment.canceled?
-        %p.lead.text-center Again add to pending?
+.row.m-t-lg
+  .col-sm-3
+    - if @appointment.pending? && @appointment.order.nil?
+      .row.wrapper-sm
+        %p.text-center Cancel it?
         = form_for @appointment do |a|
           #radio-cancel
-            = a.radio_button :status, 'pending', checked: true
+            = a.radio_button :status, 'canceled', checked: true
           %p
-            = a.submit 'pending', data: {confirm: 'Are you sure?'}, class: 'btn btn-block btn-default'
+            = a.submit 'CANCEL', data: {confirm: 'Are you sure?'}, class: 'btn btn-block btn-default'
+    - if @appointment.canceled?
+      %p.lead.text-center Again add to pending?
+      = form_for @appointment do |a|
+        #radio-cancel
+          = a.radio_button :status, 'pending', checked: true
+        %p
+          = a.submit 'pending', data: {confirm: 'Are you sure?'}, class: 'btn btn-block btn-default'
+  .col-sm-9
+    %p.lead.page-header Appointment's date is #{@appointment.date.try(:strftime, "%B %d at %I:%M %p")}
+
+.row
+  .col-sm-3.wrapper-sm
+    - if @appointment.avatar.present?
+      .text-center= image_tag @appointment.avatar, class: 'img-circle thumb-user'
+    - else
+      .text-center= image_tag 'user_photo.jpg', class: 'img-circle thumb-user'
+    %h3.text-center #{@appointment.first_name} #{@appointment.last_name}
+    %p.text-center +380 #{@appointment.phone}
+    %hr
+    .text-center
+      - if @appointment.customer.bio.present?
+        = truncate(@appointment.bio, lenght: 400)
+      - else
+        Place for notes :)
 
   .col-sm-6.col-sm-offset-1
     - if @appointment.order.nil? && @appointment.pending?

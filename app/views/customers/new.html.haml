@@ -1,4 +1,8 @@
 .row.m-t-lg
   .col-md-10.col-md-offset-1
-    %h3.page-header.text-muted Add new customer
-    = render 'form'
+    %h3.header-title
+      %i.fa.fa-user.m-r-sm
+      create new CUSTOMER
+    .new-customer-form
+      = form_for @customer do |c|
+        = render 'form', c: c
