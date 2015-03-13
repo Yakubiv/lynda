@@ -18,7 +18,7 @@
         .row
           .col-sm-12
             .old_customer
-              = a.collection_select :customer_id, Customer.all, :id, :last_name, {include_blank: 'Select customer'}, {class: 'form-control'}
+              = a.collection_select :customer_id, Customer.all, :id, :name, {include_blank: 'Select customer'}, {class: 'form-control'}
         .row
           .col-sm-12
             .customer

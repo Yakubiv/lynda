@@ -38,7 +38,7 @@
             = receipt.hidden_field :order_id, value: a.id
             = receipt.hidden_field :total_cash, value: a.services.sum(:price)
             = receipt.hidden_field :total_services, value: a.services.count
-            = receipt.submit 'Get receipt', class: 'btn btn-info btn-block'
+            = receipt.submit 'Get receipt', class: 'btn btn-edit btn-block'
         - else
           = link_to 'View receipt', order_receipt_path(a, a.receipt), class: 'btn btn-edit'
 

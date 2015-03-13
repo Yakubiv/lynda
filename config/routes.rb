@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   		get :canceled
   	end
   end
+  resources :dashboard, only: [:index]
   resources :customers
 
 end

@@ -10,4 +10,8 @@ class Customer < ActiveRecord::Base
 	def self.search(query)
 	  where('first_name ilike ? OR last_name ilike ?', "%#{query}%", "%#{query}%")
 	end
+
+  def name
+    [first_name, last_name].join(' ')
+  end
 end
