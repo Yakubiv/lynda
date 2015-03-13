@@ -6,32 +6,65 @@
     margin-bottom: 40px;
     min-height: 250px;
     box-shadow: 0px 11px 20px #999 !important;
-}
-.order{
-    background: white;
-    margin-bottom: 30px;
-    vertical-align: top;
-    box-shadow: 0px 11px 20px #999 !important;
-    min-height: 250px;
+    .btn-edit{
+        display: none;
+        background-color: #03A9F4;
+        border-radius: 0;
+        color: white;
+    }
+    &:hover{
+        .btn-edit{
+            display: block;
+        }
+    }
 }
 
 .appointment-cover {
-    background-color: #c5cbce;
+    background-color: #03A9F4 !important;
+    padding: 5px;
     background-size: cover;
     background-position: center;
     height: 55px;
     position: relative;
-    color: white;
+    .app-date{
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 90%;
+        a{color: white;}
+    }
+    .app-delete{
+        position: absolute;
+        left: 83%;
+        width: 10%;
+        a{color: white;}
+    }
 }
 
 .appointment-content {
-    padding: 10px 5px;
+    padding: 20px 10px !important;
     min-height: 100px;
-}
-
-.appointment-info{
-    padding: 5px 5px;
-    height: 50px;
+    .avatar{
+        display: block;
+        img{
+            height: 150px;
+            width: 150px;
+        }
+    }
+    h4{
+        a{
+            color: #333333 !important;
+              text-shadow: 0.2px -0.8px 5.2px #555;
+        }
+    }
+    .app-service{
+        background-color: #03A9F4;
+        padding: 5px;
+        border-radius: 15px;
+        margin: 3px;
+        font-size: 16px;
+        color: white;
+    }
 }
 
 .navbar-op{opacity: .8;}
@@ -68,11 +101,6 @@
     border-radius: 2px;
     border: 1px solid #eee;
     min-height: 150px;
-}
-.order-bottom{
-    position: relative;
-    bottom: 0px;
-    width: 100%;
 }
 
 .order-bottom .btn-info{
@@ -142,7 +170,7 @@ input[type=radio]:checked + label {
         text-align: center;
         a{
             margin-right: 0px;
-            color: #1976D2;
+            color: #03A9F4 !important;
             padding: 20px;
             display: block;
             text-transform: uppercase;
@@ -153,7 +181,7 @@ input[type=radio]:checked + label {
         &:hover{
             background-color: #BBDEFB;
         }
-        &.active{
+        .active{
             border-bottom: 2px solid #E91E63 !important;
         }
 

@@ -5,18 +5,22 @@
 .row.m-t-lg
   - @orders.each do |a|
     .cpl-xs-12.col-sm-6.col-md-3
-      .order
+      .appointment
         .appointment-cover
-          %h4.text-center.padder-t-sm #{link_to "#{a.customer.first_name} #{a.customer.last_name}", a.customer, class: 'btn'}
+          .app-date.text-center
+            = link_to "#{a.appointment.date.try(:strftime, "%B %d at %I:%M %p")}", a, class: 'btn'
         .appointment-content
-          %h4.text-center Services
+          .avatar.text-center
+            - if a.customer.avatar.present?
+              = image_tag a.customer.avatar, class: 'img-circle'
+            - else
+              = image_tag 'user_photo.jpg', class: 'img-circle'
+          %h4.text-center= link_to "#{a.customer.first_name} #{a.customer.last_name}", a.customer
+          %h5.text-center + #{a.customer.phone}
+          %hr
           - a.services.each do |s|
-            %span.lead
-              = s.name + ' | '
-          %hr
-        .appointment-info
-          %h5.text-center #{link_to "Appointment's date is #{a.appointment.date.try(:strftime, "%B %d at %I:%M %p")}", a}
-          %hr
+            %span.app-service
+              = s.name
         .wrapper-sm
           .row
             .col-sm-3
@@ -29,15 +33,14 @@
             .col-sm-9
               %p{style: 'font-size: 16px;'}
                 = a.note
-        .order-bottom
-          - if a.receipt.nil?
-            = form_for([a, a.build_receipt]) do |receipt|
-              = receipt.hidden_field :order_id, value: a.id
-              = receipt.hidden_field :total_cash, value: a.services.sum(:price)
-              = receipt.hidden_field :total_services, value: a.services.count
-              = receipt.submit 'Get receipt', class: 'btn btn-info btn-block'
-          - else
-            = link_to 'View receipt', order_receipt_path(a, a.receipt), class: 'btn btn-info btn-block'
+        - if a.receipt.nil?
+          = form_for([a, a.build_receipt]) do |receipt|
+            = receipt.hidden_field :order_id, value: a.id
+            = receipt.hidden_field :total_cash, value: a.services.sum(:price)
+            = receipt.hidden_field :total_services, value: a.services.count
+            = receipt.submit 'Get receipt', class: 'btn btn-info btn-block'
+        - else
+          = link_to 'View receipt', order_receipt_path(a, a.receipt), class: 'btn btn-edit'
 
 
 .row.m-t-lg

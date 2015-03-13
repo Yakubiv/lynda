@@ -7,21 +7,26 @@
       .col-xs-12.col-sm-6.col-md-3
         .appointment
           .appointment-cover
-            %h4.text-center.padder-t-sm #{link_to "#{a.customer.first_name} #{a.customer.last_name}", a.customer, class: 'btn'}
+            .app-date
+              = link_to "#{a.date.try(:strftime, "%B %d at %I:%M %p")}", a, class: 'btn'
+            .app-delete
+              = link_to appointment_path(a), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn' do
+                %i.fa.fa-close.fa-2x
           .appointment-content
-            %h4.text-center Services
+            .avatar.text-center
+              - if a.customer.avatar.present?
+                = image_tag a.customer.avatar, class: 'img-circle'
+              - else
+                = image_tag 'user_photo.jpg', class: 'img-circle'
+            %h4.text-center= link_to "#{a.customer.first_name} #{a.customer.last_name}", a.customer
+            %h5.text-center + #{a.customer.phone}
+            %hr
             - a.services.each do |s|
-              %span.lead
-                = s.name + ' | '
-            %hr
-          .appointment-info
-            %h5.text-center #{link_to "Appointment's date is #{a.date.try(:strftime, "%B %d at %I:%M %p")}", a}
-            %hr
-          .row.wrapper
-            .col-xs-1.col-sm-1.col-md-1
-              = link_to(fa_icon('edit'), edit_appointment_path(a))
-            .col-xs-1.col-sm-1.col-md-1.col-xs-offset-10.col-sm-offset-9.col-md-offset-8
-              = link_to(fa_icon('trash'), appointment_path(a), method: :delete)
+              %span.app-service
+                = s.name
+          = link_to edit_appointment_path(a), class: 'btn btn-edit' do
+            edit
+
   - else
     %h3.text-center.text-muted
       No found #{@header} appointments! :(
