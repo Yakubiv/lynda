@@ -4,14 +4,13 @@
   - @services.each do |s|
     .col-sm-3.col-md-2
       .service
+        .service-top
+          .row
+            .col-sm-6
+              %h4 #{s.name}
+            .col-sm-6
+              %h4 #{s.price} ₴
         .service-cover{style: "background-image: url('#{s.cover}')" }
-          .cover-overlay
-            .wrapper-sm
-              %h4 Name: #{s.name}
-              %h4 Price: #{s.price} ₴
-          .service-bottom
-            .btn-group.btn-group-justified
-              .col-xs-9
-                = link_to 'edit', edit_service_path(s), class: 'btn btn-block btn-info btn-service'
-              .col-xs-3
-                = link_to fa_icon('trash'), service_path(s), method: :delete, class: 'btn btn-block btn-service btn-danger'
+        .service-bottom
+          = link_to 'edit', edit_service_path(s), class: 'btn btn-block btn-service btn-danger'
+          = link_to fa_icon('trash'), service_path(s), method: :delete, class: 'btn btn-block btn-service btn-danger'

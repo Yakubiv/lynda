@@ -15,35 +15,26 @@
 .service{
 	background: white;
     margin-bottom: 40px;
-    height: 200px;
     box-shadow: 0px 11px 20px #999;
+    .service-top{
+        height: 40px;
+        background-color: #03A9F4 !important;
+        padding: 0 10px;
+        color: white;
+        background-size: cover;
+        background-position: center;
+    }
+    .service-cover{
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+    }
+    .service-bottom{
+        position: relative;
+        bottom: 0;
+    }
 }
 
-.service-cover {
-    background-color: #c5cbce;
-    background-size: cover;
-    background-position: center;
-    height: 200px;
-    position: relative;
-    color: white;
-    text-shadow: 0px 0px 1px #555;
-}
-.service-cover .cover-overlay {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    right: 0px;
-    left: 0px;
-    height: 150px;
-}
-
-.service-bottom{
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    .col-xs-9{padding: 0 !important}
-    .col-xs-3{padding: 0 !important}
-}
 .service .btn-service{
 	border-radius: 0px !important;
 }
