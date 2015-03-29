@@ -12,5 +12,6 @@
               %h4 #{s.price} ₴
         .service-cover{style: "background-image: url('#{s.cover}')" }
         .service-bottom
-          = link_to 'edit', edit_service_path(s), class: 'btn btn-block btn-service btn-danger'
-          = link_to fa_icon('trash'), service_path(s), method: :delete, class: 'btn btn-block btn-service btn-danger'
+          = link_to fa_icon('edit'), edit_service_path(s), class: 'btn btn-service btn-primary'
+          .pull-right
+            = link_to fa_icon('trash'), service_path(s), method: :delete, class: 'btn btn-service btn-danger'

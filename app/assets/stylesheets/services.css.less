@@ -7,9 +7,13 @@
 	background: none;
 }
 .btn-primary.btn-border {
-    color: #286090;
-    border-color: #286090;
+    color: #03A9F4 !important;
+    border-color: #03A9F4 !important;
     background: none;
+    &:hover{
+        background-color: #03A9F4 !important;
+        color: white !important;
+    }
 }
 
 .service{
@@ -30,8 +34,15 @@
         background-position: center;
     }
     .service-bottom{
+        display: none;
         position: relative;
         bottom: 0;
+        transition: 3s linear;
+    }
+    &:hover .service-bottom{
+        -webkit-transition: width 2s; /* Safari */
+        transition: width 2s;
+        display: block;
     }
 }
 

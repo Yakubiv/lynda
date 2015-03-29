@@ -1,40 +1,55 @@
-.row.m-t.xl
-  .col-md-12
-    %h2.text-center Customer history
-    .row.m-t-lg
-      .col-md-3
-        .user-info
-          .info-t
-            %h3.wrapper-sm.text-center CUSTOMER
-          .info-c
-            %p #{@customer.first_name} #{@customer.last_name}
-            %p= @customer.phone
-            %p= @customer.email
-            %hr
-            .notes
-              %span{style: 'font-style: italic;'} Notes:
-              %p= @customer.bio
-      .col-md-9
-        %h3.text-center Appointments
-        .row.m-t-lg.text-center
-          .col-md-4
-            %p.lead Pending
-            .row.m-t-lg
-              - @customer.appointments.each do |app|
-                -if app.pending?
-                  %p
-                    = link_to app.date.try(:strftime, "%B %d at %I:%M %p"), app
-          .col-md-4
-            %p.lead Completed
-            .row.m-t-lg
-              - @customer.appointments.each do |app|
-                -if app.completed?
-                  %p
-                    = link_to app.date.try(:strftime, "%B %d at %I:%M %p"), app.order
-          .col-md-4
-            %p.lead Cancelled
-            .row.m-t-lg
-              - @customer.appointments.each do |app|
-                -if app.canceled?
-                  %p
-                    = link_to app.date.try(:strftime, "%B %d at %I:%M %p"), app
+%section.customer-history
+  .row
+    .col-sm-3
+      .avatar
+        - if @customer.avatar.present?
+          .text-center= image_tag @customer.avatar, class: 'img-circle'
+        - else
+          .text-center= image_tag 'user_photo.jpg', class: 'img-circle'
+    .col-sm-9
+      .info
+        %p
+          = @customer.first_name
+          = @customer.last_name
+        %p{style: "font-size: 14px"}
+          %i.fa.fa-circle
+        %p
+          %i.fa.fa-phone
+          +
+          = @customer.phone
+        %p{style: "font-size: 14px"}
+          %i.fa.fa-circle
+        %p
+          %i.fa.fa-envelope
+          = @customer.email
+      .bio
+        %p{style: "font-size: 25px"} Customer bio:
+        - if @customer.bio.present?
+          %p.m-t-lg= @customer.bio
+        - else
+          %p Nothing here yet :( but you can add some here #{link_to fa_icon('newspaper-o'), customer_path(@customer) }
+.row.m-t-xl
+  .col-sm-12
+    %h1.text-center.pretty-font Appointments
+    .row.m-t-lg.text-center
+      .col-md-4
+        %p.lead Pending
+        .row.m-t-lg
+          - @customer.appointments.each do |app|
+            -if app.pending?
+              %p
+                = link_to app.date.try(:strftime, "%B %d at %I:%M %p"), app
+      .col-md-4
+        %p.lead Completed
+        .row.m-t-lg
+          - @customer.appointments.each do |app|
+            -if app.completed?
+              %p
+                = link_to app.date.try(:strftime, "%B %d at %I:%M %p"), app.order
+      .col-md-4
+        %p.lead Cancelled
+        .row.m-t-lg
+          - @customer.appointments.each do |app|
+            -if app.canceled?
+              %p
+                = link_to app.date.try(:strftime, "%B %d at %I:%M %p"), app
