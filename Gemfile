@@ -25,9 +25,9 @@ gem 'fog', '1.23'
 gem 'mini_magick'
 gem 'active_enum'
 gem 'rmagick'
-gem 'keen'
 gem "figaro"
-gem "em-http-request", "~> 1.0"
+gem 'groupdate'
+gem 'chartkick'
 
 gem 'jbuilder'
 gem 'sdoc',  group: :doc

@@ -1,2 +1,19 @@
 .row.m-t-lg
-  %h3.text-center All charts
+  .col-sm-12
+    %p.pretty-font{style: "font-weight: 200;"}
+      %i.fa.fa-dashboard.fa-2x.m-r-lg
+      DASHBOARD
+    .row.m-t-xl.bg-lt
+      .col-sm-4.wrapper
+        .chart
+          %p.pretty-font.text-center.m-b-lg Appointments
+          = pie_chart Appointment.group(:status).count
+      .col-sm-4.wrapper
+        .chart
+          %p.pretty-font.text-center.m-b-lg Repeated customers
+          = pie_chart Appointment.group(:is_new_customer).count
+    .row.m-t-xl-bg-lt
+      .col-sm-12
+        = area_chart Order.group_by_day(:created_at, last: 14).count
+
+
