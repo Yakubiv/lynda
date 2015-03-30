@@ -12,8 +12,9 @@
         .chart
           %p.pretty-font.text-center.m-b-lg Repeated customers
           = pie_chart Appointment.group(:is_new_customer).count
-    .row.m-t-xl-bg-lt
+    .row.m-t-xl.bg-lt.wrapper
       .col-sm-12
-        = area_chart Order.group_by_day(:created_at, last: 14).count
+        %p.pretty-font.text-center.m-b-lg Appointments in last two weeks
+        = area_chart Appointment.group_by_day(:created_at, last: 14).count
 
 

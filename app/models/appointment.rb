@@ -7,7 +7,7 @@ class Appointment < ActiveRecord::Base
 
   delegate :first_name, :last_name, :phone, :bio, :avatar, to: :customer
 
-  validates :date, :customer_id, presence: true
+  validates :date, presence: true
 
   accepts_nested_attributes_for :customer, allow_destroy: true
   before_save :set_pending, if: :new_record?
