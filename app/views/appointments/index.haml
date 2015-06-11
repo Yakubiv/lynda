@@ -1,7 +1,7 @@
 .row.m-t-lg
   .col-xs-12.col-sm-12.col-md-12
     = render 'links'
-.row.m-t-lg
+.row.m-t-xl
   - if @appointments.present?
     - @appointments.each do |a|
       .col-xs-12.col-sm-6.col-md-3
@@ -24,8 +24,9 @@
             - a.services.each do |s|
               %span.app-service
                 = s.name
-          = link_to edit_appointment_path(a), class: 'btn btn-edit' do
-            edit
+          .m-b-xl
+            = link_to edit_appointment_path(a), class: 'btn btn-edit' do
+              edit
 
   - else
     %h3.text-center.text-muted

@@ -9,6 +9,7 @@
  *= require appointments
  *= require utilities
  *= require bootstrap-datetimepicker
+ *= require bootstrap-datepicker
  *= require_self
  *= require parsley
  */

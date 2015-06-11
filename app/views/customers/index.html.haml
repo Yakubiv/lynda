@@ -7,43 +7,45 @@
 .row
   .col-sm-12
     %h2.page-header.text-muted All customers
-    - @customers.each do |customer|
-      .col-md-3
-        .people
-          .header
-            .row
-              .col-sm-5
-                .avatar
-                  - if customer.avatar.present?
-                    = image_tag customer.avatar, class: 'img-circle'
-                  - else
-                    = image_tag 'user_photo.jpg', class: 'img-circle'
-              .col-sm-7
-                .info
-                  %p #{customer.first_name} #{customer.last_name}
-                .phone
-                  %p +380 #{customer.phone}
-            %hr
-          .people-notes
-            - if customer.bio.present?
-              = truncate(customer.bio, lenght: 400)
-            - else
-              Place for notes :)
-          .people-content
-            .col-sm-4
-              = link_to(fa_icon('history'), customer, class: 'btn btn-success btn-lg btn-border')
-            .col-sm-4.col-sm-offset-4
-              = link_to( fa_icon('edit'), edit_customer_path(customer), class: 'btn btn-primary btn-lg btn-border')
-          .footer
-            .col-sm-4.text-center
-              = customer.orders.count
-              ORDERS
-            .col-sm-4.text-center
-              = customer.appointments.pending.count
-              PENDING
-            .col-sm-4.text-center
-              = customer.appointments.canceled.count
-              CANCEL
+    .row
+      - @customers.each do |customer|
+        .col-sm-3
+          .people
+            .header
+              .row
+                .col-sm-5
+                  .avatar
+                    - if customer.avatar.present?
+                      = image_tag customer.avatar, class: 'img-circle'
+                    - else
+                      = image_tag 'user_photo.jpg', class: 'img-circle'
+                .col-sm-7
+                  .info
+                    %p #{customer.first_name} #{customer.last_name}
+                  .phone
+                    %p +380 #{customer.phone}
+              %hr
+            .people-notes
+              - if customer.bio.present?
+                = truncate(customer.bio, lenght: 400)
+              - else
+                Place for notes :)
+            .people-content.text-center
+              .col-sm-4
+                = link_to(fa_icon('history'), customer, class: 'btn btn-success btn-lg btn-border')
+              .col-sm-4.col-sm-offset-4
+                = link_to( fa_icon('edit'), edit_customer_path(customer), class: 'btn btn-primary btn-lg btn-border')
+            .footer
+              .row
+                .col-sm-4.text-center
+                  = customer.orders.count
+                  ORDERS
+                .col-sm-4.text-center
+                  = customer.appointments.pending.count
+                  PENDING
+                .col-sm-4.text-center
+                  = customer.appointments.canceled.count
+                  CANCEL
 .row
   .col-md-10.col-md-offset-1.text-center
     = will_paginate @customers

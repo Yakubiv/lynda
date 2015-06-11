@@ -11,7 +11,6 @@
 // about supported directives.
 //
 
-
 //= require jquery
 //= require jquery_ujs
 //= require parsley
@@ -21,6 +20,7 @@
 //= require validations
 //= require metrics
 
+//= require bootstrap-datepicker/core
 //= require bootstrap/transition
 //= require bootstrap/carousel
 //= require bootstrap/modal

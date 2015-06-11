@@ -23,7 +23,7 @@
       = image_tag @order.customer.avatar, class: 'img-circle thumb-user'
     - else
       = image_tag 'user_photo.jpg', class: 'img-circle thumb-user'
-    %h3 #{@order.customer.first_name} #{@order.customer.last_name}
+    %h3= link_to @order.customer.name, customer_path(@order.customer.id)
     %p +380 #{@order.customer.phone}
     %hr
     - if @order.customer.bio.present?

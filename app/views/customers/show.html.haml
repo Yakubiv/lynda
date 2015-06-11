@@ -27,7 +27,7 @@
         - if @customer.bio.present?
           %p.m-t-lg= @customer.bio
         - else
-          %p Nothing here yet :( but you can add some here #{link_to fa_icon('newspaper-o'), customer_path(@customer) }
+          %p Nothing here yet :( but you can add some here #{link_to fa_icon('newspaper-o'), edit_customer_path(@customer) }
 .row.m-t-xl
   .col-sm-12
     %h1.text-center.pretty-font Appointments

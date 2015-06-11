@@ -7,15 +7,17 @@
     min-height: 250px;
     box-shadow: 0px 11px 20px #999 !important;
     .btn-edit{
-        display: none;
+        visibility: hidden;
         background-color: #03A9F4;
         border-radius: 0;
         color: white;
+        width: 100%;
     }
     &:hover{
-        .btn-edit{
-            display: block;
-        }
+      .btn-edit{
+          visibility: inherit;
+      }
+      width: 100%;
     }
 }
 
