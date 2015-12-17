@@ -1,0 +1,27 @@
+
+.row.m-t
+  .col-sm-6
+    %form
+      %p First name:
+      %input.form-control{ type: 'text' }
+      %br
+      %p Last name:
+      %input.form-control{ type: 'text' }
+      %br
+      %p Email:
+      %input.form-control{ type: 'text' }
+      %br
+      %p Phone:
+      %input.form-control{ type: 'text' }
+      %br
+      %p Password:
+      %input.form-control{ type: 'text' }
+      %br
+      %p Confirm password:
+      %input.form-control{ type: 'text' }
+  .col-sm-6
+    %img{ :height => "300", :src => "assets/images/user_photo.jpg", :width => "300"}
+    %form
+      %p Select image to upload:
+      %input#fileToUpload.m-t{:name => "fileToUpload", :type => "file"}
+      %input.btn.btn-success.m-t{:name => "submit", :type => "submit", :value => "Upload Image"}

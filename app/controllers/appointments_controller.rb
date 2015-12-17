@@ -53,16 +53,18 @@ class AppointmentsController < ApplicationController
     redirect_to appointments_path
   end
 
-  #def keen_params
-  #  { request: {
-  #      ip: request.ip },
-  #    appoinment: {
-  #      status: 'pending' } }
-  #end
-  #def perform_tracking
-  #  http = Keen.publish_async('appointments', keen_params)
-  #  http.callback { |response| puts "Success: #{response}"}
-  #end
+  def keen_params
+   { request: {
+       ip: request.ip },
+     appoinment: {
+       status: 'pending' } }
+  end
+
+  def perform_tracking
+   http = Keen.publish_async('appointments', keen_params)
+   http.callback { |response| puts "Success: #{response}"}
+  end
+
   private
 
   def find_appointment

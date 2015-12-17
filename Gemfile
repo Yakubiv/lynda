@@ -8,6 +8,8 @@ gem "therubyracer"
 gem "less-rails"
 gem 'powder'
 
+gem 'sidekiq'
+gem 'autoscaler'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'

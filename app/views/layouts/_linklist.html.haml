@@ -1,5 +1,12 @@
 .m-t-xl
   .list-group
+    = link_to oleg_dashboard_index_path, class: "list-group-item #{'active' if params[:action] == 'oleg'}" do
+      %i.fa.fa-dashboard.m-r-sm
+      oleg
+    = link_to project_dashboard_index_path, class: "list-group-item #{'active' if params[:action] == 'oleg'}" do
+      %i.fa.fa-dashboard.m-r-sm
+      project
+
     = link_to dashboard_index_path, class: "list-group-item #{'active' if controller_name == 'dashboard'}" do
       %i.fa.fa-dashboard.m-r-sm
       deshboard

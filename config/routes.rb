@@ -7,12 +7,17 @@ Rails.application.routes.draw do
     resources :images
   end
   resources :appointments do
-  resources :orders, except: [:index, :show]
+    resources :orders, except: [:index, :show]
   	collection do
   		get :canceled
   	end
   end
-  resources :dashboard, only: [:index]
+  resources :dashboard, only: [:index] do
+    collection do
+      get :oleg
+      get :project
+    end
+  end
   resources :customers
 
 end
