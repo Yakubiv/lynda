@@ -1,0 +1,46 @@
+.row.m-t-xl
+  .col-sm-9
+    .user-section.text-center
+      = image_tag user.profile_image_url, class: 'img-circle'
+      .user-name
+        = user.name
+      .user-counters
+        .row
+          .col-sm-4
+            .counter-value= user.tweets_count
+            .counter-title Tweets
+          .col-sm-4
+            .counter-value= user.friends_count
+            .counter-title Friends
+          .col-sm-4
+            .counter-value= user.followers_count
+            .counter-title Followers
+
+  .col-sm-3
+    .panel.panel-default
+      = form_tag params.merge(nickname: params[:nickname]), method: :get do
+        .panel-body
+          = select_tag :nickname, options_for_select(twitter_users, params[:nickname] || 'PYakubiv'), prompt: 'Select Friend', required: true, class: 'form-control input-lg'
+        .panel-footer
+          = button_tag "#{fa_icon('search')} Fetch Tweets".html_safe, name: nil, class: 'btn btn-info btn-block'
+    %div.text-center.m-t-xl
+      = link_to kursach_tweets_path, method: :post, class: 'btn' do
+        %i.fa.fa-database.fa-5x.text-center
+        %p.m-t-lg Add Tweets To DB
+.text-center.m-t-xl
+  .tweets-header last 50 tweets
+.row.m-t-xl
+  .col-sm-12
+    .tweets
+      - tweets.each do |tweet|
+        .tweet
+          .panel.panel-default
+            .panel-body
+              %h3= tweet.text
+              %h4.text-muted
+                %i.fa.fa-clock-o
+                = tweet.created_at.to_s(:short)
+            .panel-footer
+              .likes.text-muted
+                %i.fa.fa-heart.m-r-xs
+                = tweet.favorites_count

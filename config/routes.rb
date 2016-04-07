@@ -20,4 +20,7 @@ Rails.application.routes.draw do
   end
   resources :customers
 
+  namespace :kursach do
+    resources :tweets, only: [:index, :create]
+  end
 end

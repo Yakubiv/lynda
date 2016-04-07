@@ -7,6 +7,7 @@ gem 'pg'
 gem "therubyracer"
 gem "less-rails"
 gem 'powder'
+gem 'twitter'
 
 gem 'sidekiq'
 gem 'autoscaler'

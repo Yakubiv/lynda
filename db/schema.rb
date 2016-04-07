@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150209180105) do
+ActiveRecord::Schema.define(version: 20160407152305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,27 @@ ActiveRecord::Schema.define(version: 20150209180105) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "cover"
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.string   "text"
+    t.datetime "date"
+    t.string   "owner_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "favorites_count"
+    t.string   "origin_id"
+  end
+
+  create_table "twitter_users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "nickname"
+    t.string   "profile_image_url"
+    t.integer  "tweets_count"
+    t.integer  "followers_count"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "friends_count"
   end
 
 end

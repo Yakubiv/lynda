@@ -1,5 +1,8 @@
 .m-t-xl
   .list-group
+    = link_to kursach_tweets_path, class: "list-group-item #{'active' if controller_name == 'tweets'}" do
+      %i.fa.fa-gears.m-r-xs
+      Kursach
     = link_to oleg_dashboard_index_path, class: "list-group-item #{'active' if params[:action] == 'oleg'}" do
       %i.fa.fa-dashboard.m-r-sm
       oleg
