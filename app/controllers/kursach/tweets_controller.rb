@@ -33,7 +33,7 @@ module Kursach
     helper_method :user
 
     def tweets
-      @tweets = if user.tweets.any?
+      @tweets = unless user.tweets.count != TwitterApi.tweets(user.nickname)
         user.tweets
       else
         TwitterApi.tweets(params[:nickname] || 'PYakubiv')
