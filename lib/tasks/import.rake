@@ -5,7 +5,7 @@ namespace :import do
         name: friend.name,
         nickname: friend.screen_name,
         profile_image_url: friend.profile_image_url,
-        tweets_counts: friend.tweets_count,
+        tweets_count: friend.tweets_count,
         followers_count: friend.followers_count,
         friends_count: friend.friends_count
       }
@@ -17,7 +17,7 @@ namespace :import do
     TwitterUser.create({name: friend.name,
                         nickname: friend.screen_name,
                         profile_image_url: friend.profile_image_url,
-                        tweets_counts: friend.tweets_count,
+                        tweets_count: friend.tweets_count,
                         followers_count:  friend.followers_count,
                         friends_count: friend.friends_count})
   end
